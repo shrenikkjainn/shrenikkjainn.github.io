@@ -20,38 +20,53 @@
 <body>
     <canvas id="background-canvas"></canvas>
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#home">Shrenik Jain</a>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#skills" class="nav-link">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#certifications" class="nav-link">Certifications</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+<nav class="navbar">
+    <div class="nav-container">
+
+        <div class="nav-logo">
+            <a href="#home">Shrenik Jain</a>
         </div>
-    </nav>
+
+        <ul class="nav-menu" id="navMenu">
+            <li class="nav-item">
+                <a href="#home" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="#skills" class="nav-link">Skills</a>
+            </li>
+            <li class="nav-item">
+                <a href="#projects" class="nav-link">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a href="#certifications" class="nav-link">Certifications</a>
+            </li>
+            <li class="nav-item">
+                <a href="#resume" class="nav-link">Resume</a>
+            </li>
+            <li class="nav-item">
+                <a href="#contact" class="nav-link">Contact</a>
+            </li>
+        </ul>
+
+        <!-- Theme Toggle -->
+        <div class="theme-toggle" id="themeToggle">
+            <svg id="themeIcon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M12 4.5a7.5 7.5 0 100 15 7.5 7.5 0 000-15z"/>
+            </svg>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+</nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -428,36 +443,394 @@
     </div>
 </section>
 
+<!-- Resume Section -->
+<section id="resume" class="resume animate-on-scroll">
+
+<div class="resume-container">
+
+<!-- HEADER -->
+
+<div class="resume-header">
+
+<h2 class="section-title">My Resume</h2>
+
+<div class="resume-contact-tags">
+
+<a href="mailto:shrenikjainwos@gmail.com" class="contact-tag">
+<span>📧 shrenikjainwos@gmail.com</span>
+</a>
+
+<a href="tel:+919914220785" class="contact-tag">
+<span>📱 +91 9914220785</span>
+</a>
+
+<a href="https://linkedin.com/in/shrenikkjainn" target="_blank" class="contact-tag">
+<span>🔗 LinkedIn</span>
+</a>
+
+<a href="https://github.com/shrenikkjainn" target="_blank" class="contact-tag">
+<span>💻 GitHub</span>
+</a>
+
+</div>
+
+</div>
+
+
+<!-- TABS -->
+
+<div class="resume-tabs">
+
+<button class="tab-btn active" data-tab="education">Education</button>
+<button class="tab-btn" data-tab="skills-tab">Skills</button>
+<button class="tab-btn" data-tab="projects-tab">Projects</button>
+<button class="tab-btn" data-tab="training">Training</button>
+<button class="tab-btn" data-tab="certificates-tab">Certificates</button>
+
+</div>
+
+
+<div class="resume-content">
+
+
+<!-- EDUCATION -->
+
+<div class="tab-content active" id="education">
+
+<div class="resume-card">
+<div class="resume-card-header">
+<div>
+<h3 class="resume-card-title">Bachelor of Technology – Computer Science and Engineering</h3>
+<p class="resume-card-subtitle">Lovely Professional University</p>
+</div>
+<span class="resume-card-date">Aug 2023 – Present</span>
+</div>
+
+<div class="resume-card-body">
+<ul>
+<li>CGPA: 7.43</li>
+</ul>
+</div>
+</div>
+
+<div class="resume-card">
+<div class="resume-card-header">
+<div>
+<h3 class="resume-card-title">Intermediate (PCM)</h3>
+<p class="resume-card-subtitle">SD Senior Secondary School, Hoshiarpur</p>
+</div>
+<span class="resume-card-date">2022 – 2023</span>
+</div>
+
+<div class="resume-card-body">
+<ul>
+<li>Percentage: 87%</li>
+</ul>
+</div>
+</div>
+
+<div class="resume-card">
+<div class="resume-card-header">
+<div>
+<h3 class="resume-card-title">Matriculation</h3>
+<p class="resume-card-subtitle">Woodland Overseas School, Hoshiarpur</p>
+</div>
+<span class="resume-card-date">2020 – 2021</span>
+</div>
+
+<div class="resume-card-body">
+<ul>
+<li>Percentage: 89.2%</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+
+<!-- SKILLS -->
+
+<div class="tab-content" id="skills-tab">
+
+<div class="resume-card">
+
+<h3 class="resume-card-title" style="margin-bottom:20px;">Technical Skills</h3>
+
+<div class="resume-card-body">
+
+<div class="skills-modern-grid" style="grid-template-columns: repeat(2,1fr); gap:20px;">
+
+<div>
+<p class="resume-card-subtitle">Languages</p>
+<div class="skill-tags">
+<span>C++</span>
+<span>Python</span>
+<span>Java</span>
+<span>SQL</span>
+</div>
+</div>
+
+<div>
+<p class="resume-card-subtitle">Frameworks</p>
+<div class="skill-tags">
+<span>Django</span>
+<span>Flask</span>
+<span>REST APIs</span>
+</div>
+</div>
+
+<div>
+<p class="resume-card-subtitle">Tools / Platforms</p>
+<div class="skill-tags">
+<span>AWS</span>
+<span>Docker</span>
+<span>Kubernetes</span>
+<span>Git</span>
+<span>Linux</span>
+<span>Postman</span>
+<span>MySQL Workbench</span>
+</div>
+</div>
+
+<div>
+<p class="resume-card-subtitle">Core Fundamentals</p>
+<div class="skill-tags">
+<span>Data Structures</span>
+<span>DBMS</span>
+<span>OOP</span>
+<span>Operating Systems</span>
+<span>Computer Networks</span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PROJECTS -->
+
+<div class="tab-content" id="projects-tab">
+
+<div class="resume-card">
+
+<div class="resume-card-header">
+<div>
+<h3 class="resume-card-title">Full-Stack E-Commerce Application</h3>
+<p class="resume-card-subtitle">Django, SQLite, HTML/CSS</p>
+</div>
+<span class="resume-card-date">Feb 2026</span>
+</div>
+
+<div class="resume-card-body">
+<ul>
+<li>Developed a database-driven e-commerce platform using Django.</li>
+<li>Implemented authentication and secure session management.</li>
+<li>Designed relational models for products, carts, and orders.</li>
+</ul>
+</div>
+
+</div>
+
+
+<div class="resume-card">
+
+<div class="resume-card-header">
+<div>
+<h3 class="resume-card-title">Student Management System</h3>
+<p class="resume-card-subtitle">C++, File Handling</p>
+</div>
+<span class="resume-card-date">Jun 2025</span>
+</div>
+
+<div class="resume-card-body">
+<ul>
+<li>Built menu-driven system for storing and managing student data.</li>
+<li>Implemented authentication and CRUD operations.</li>
+</ul>
+</div>
+
+</div>
+
+
+<div class="resume-card">
+
+<div class="resume-card-header">
+<div>
+<h3 class="resume-card-title">Scalable E-Commerce Architecture</h3>
+<p class="resume-card-subtitle">AWS EC2, S3, CloudFront, DynamoDB</p>
+</div>
+<span class="resume-card-date">Apr 2025</span>
+</div>
+
+<div class="resume-card-body">
+<ul>
+<li>Designed distributed cloud architecture using AWS services.</li>
+<li>Configured CDN caching and scalable infrastructure.</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TRAINING -->
+
+<div class="tab-content" id="training">
+
+<div class="resume-card">
+
+<div class="resume-card-header">
+<div>
+<h3 class="resume-card-title">C++ Programming – OOPs & DSA</h3>
+<p class="resume-card-subtitle">CSE Pathshala</p>
+</div>
+<span class="resume-card-date">Jun 2025 – Jul 2025</span>
+</div>
+
+<div class="resume-card-body">
+<ul>
+<li>Implemented Trees, Hash Maps, and Searching Algorithms.</li>
+<li>Practiced 150+ DSA problems.</li>
+</ul>
+</div>
+
+</div>
+
+<div class="resume-card">
+<div class="resume-card-body">
+<ul>
+<li>Build-a-thon Hackathon – Board Infinity (Apr 2024)</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+
+<!-- CERTIFICATES -->
+
+<div class="tab-content" id="certificates-tab">
+
+<div class="resume-card">
+<h3 class="resume-card-title">AWS Academy Graduate – Cloud Architecting</h3>
+</div>
+
+<div class="resume-card">
+<h3 class="resume-card-title">NPTEL Elite Certification – Introduction to IoT</h3>
+</div>
+
+<div class="resume-card">
+<h3 class="resume-card-title">Build Generative AI Apps – Udemy</h3>
+</div>
+
+<div class="resume-card">
+<h3 class="resume-card-title">Introduction to Hardware & Operating Systems – IBM</h3>
+</div>
+
+<div class="resume-card">
+<h3 class="resume-card-title">Fundamentals of Network Communication – Coursera</h3>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- DOWNLOAD -->
+
+<div class="resume-download">
+
+<a href="assets/CV final.pdf" class="btn btn-primary" download>
+📥 Download Full Resume
+</a>
+
+</div>
+
+</div>
+
+</section>
+
     <!-- Contact Section -->
-    <section id="contact" class="contact animate-on-scroll">
-        <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="contact-subtitle">I'm always interested in hearing about new projects and opportunities.</p>
+<section id="contact" class="contact animate-on-scroll">
 
-            <div class="contact-content">
-                <div class="contact-card">
-                    <h3>📧 Email</h3>
-                    <a href="mailto:shrenikjainwos@gmail.com">shrenikjainwos@gmail.com</a>
-                </div>
-                <div class="contact-card">
-                    <h3>💼 LinkedIn</h3>
-                    <a href="https://linkedin.com/in/shrenikkjainn" target="_blank">linkedin.com/in/shrenikkjainn</a>
-                </div>
-                <div class="contact-card">
-                    <h3>🐙 GitHub</h3>
-                    <a href="https://github.com/shrenikkjainn" target="_blank">github.com/shrenikkjainn</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="container">
 
-    <!-- Modal for Project Details -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div id="modalBody"></div>
-        </div>
-    </div>
+<h2 class="section-title">Let's Connect</h2>
+
+<p class="contact-subtitle">
+I'm always interested in hearing about new projects and opportunities.
+</p>
+
+<div class="contact-content">
+
+<!-- EMAIL -->
+<div class="contact-card">
+<h3>📧 Email</h3>
+<a href="mailto:shrenikjainwos@gmail.com">
+shrenikjainwos@gmail.com
+</a>
+</div>
+
+<!-- LINKEDIN -->
+<div class="contact-card">
+<h3>💼 LinkedIn</h3>
+<a href="https://linkedin.com/in/shrenikkjainn" target="_blank">
+linkedin.com/in/shrenikkjainn
+</a>
+</div>
+
+<!-- GITHUB -->
+<div class="contact-card">
+<h3>🐙 GitHub</h3>
+<a href="https://github.com/shrenikkjainn" target="_blank">
+github.com/shrenikkjainn
+</a>
+</div>
+
+<!-- FORM -->
+<div class="contact-card contact-form-card">
+
+<h3>Send a Message</h3>
+
+<form class="contact-form">
+
+<input
+type="text"
+placeholder="Your Name"
+required
+>
+
+<input
+type="email"
+placeholder="Your Email"
+required
+>
+
+<textarea
+rows="5"
+placeholder="Your Message"
+required
+></textarea>
+
+<button type="submit" class="btn btn-primary">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 
     <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top">
