@@ -249,3 +249,26 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll(".animate-on-scroll").forEach(el => observer.observe(el));
+
+async function loadProjects() {
+    const response = await fetch(
+        "https://raw.githubusercontent.com/shrenikkjainn/portfolio-data/main/projects.json"
+    );
+
+    const projects = await response.json();
+    const container = document.getElementById("projects-grid");
+
+    projects.forEach(project => {
+        const card = `
+        <div class="project-card">
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <span>${project.tech}</span>
+            <a href="${project.github}" target="_blank">GitHub</a>
+        </div>
+        `;
+        container.innerHTML += card;
+    });
+}
+
+loadProjects();
