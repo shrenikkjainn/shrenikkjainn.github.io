@@ -917,14 +917,14 @@ body.dark-theme .navbar.scrolled {
    ======================================== */
 
 .resume {
-    padding: 100px 20px;
+    padding: 70px 20px;
     background: transparent;
 }
 
 .resume-container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 40px 25px;
+    padding: 30px 25px;
     border-radius: 25px;
     background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(10px);
@@ -939,7 +939,13 @@ body.dark-theme .resume-container {
 
 .resume-header {
     text-align: center;
-    margin-bottom: 18px;
+    margin-bottom: 30px;
+}
+
+.resume-content{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
 }
 
 .resume-contact-tags {
@@ -980,7 +986,7 @@ body.dark-theme .resume-container {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     flex-wrap: wrap;
     background: rgba(255, 255, 255, 0.03);
     padding: 10px;
@@ -1035,46 +1041,38 @@ body.dark-theme .resume-container {
 
 /* Resume Cards */
 
-.resume-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 30px;
-    border-radius: 20px;
-    margin-bottom: 25px;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
+.resume-card{
+    background: rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:18px;
+    margin-bottom:14px;
+    transition:none;
 }
 
-.resume-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--primary-color);
-    opacity: 0;
-    transition: var(--transition);
+body:not(.dark-theme) .resume-card{
+    background: rgba(102,126,234,0.06);
+    border: 1px solid rgba(102,126,234,0.15);
 }
 
-.resume-card:hover {
-    background: rgba(102, 126, 234, 0.05);
-    border-color: rgba(102, 126, 234, 0.3);
-    transform: translateX(5px);
+.resume-card::before{
+    content:"";
+    position:absolute;
+    left:-1px;
+    top:12px;
+    bottom:12px;   /* instead of height */
+    width:4px;
+    background:var(--primary-color);
+    border-radius:4px;
+    opacity:0;
+    transition:opacity .3s ease;
 }
 
-.resume-card:hover::before {
-    opacity: 1;
-}
-
-.resume-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 0;
-    flex-wrap: wrap;
-    gap: 10px;
+.resume-card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:12px;
 }
 
 .resume-card-title {
