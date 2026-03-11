@@ -939,7 +939,7 @@ body.dark-theme .resume-container {
 
 .resume-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 18px;
 }
 
 .resume-contact-tags {
@@ -947,7 +947,7 @@ body.dark-theme .resume-container {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 6px;
 }
 
 .contact-tag {
@@ -1072,13 +1072,13 @@ body.dark-theme .resume-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 15px;
+    margin-bottom: 0;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .resume-card-title {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: 600;
     color: var(--text-color);
 }
@@ -1087,7 +1087,7 @@ body.dark-theme .resume-container {
     font-size: 1rem;
     color: var(--primary-color);
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 0;
 }
 
 .resume-card-date {
@@ -1101,14 +1101,16 @@ body.dark-theme .resume-container {
 
 .resume-card-body ul {
     list-style: none;
+    margin-top: 10px
 }
 
 .resume-card-body li {
     position: relative;
     padding-left: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: var(--text-secondary);
     font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .resume-card-body li::before {
