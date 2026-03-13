@@ -1,191 +1,79 @@
-/**
- * Portfolio JavaScript
- * Refactored for Readability and Maintainability
- */
+/* ============================================
+   loader.js — Fast Section Loader
+   Loads all HTML sections in parallel
+============================================ */
 
-/* ========= 1. Data Configurations ========= */
+const sections = [
+  "navbar",
+  "hero",
+  "about",
+  "skills",
+  "projects",
+  "certifications",
+  "resume",
+  "contact",
+  "footer"
+];
 
-const PROJECT_DATA = {
-  1: {
-    title: "Full-Stack Ecommerce Application",
-    description: "A full-stack e-commerce web application built with Django.",
-    details: ["User authentication", "Product catalog", "Cart system", "Order management", "Admin dashboard"],
-    technologies: ["Django", "Python", "HTML", "CSS", "SQLite"],
-    link: "#"
-  },
-  2: {
-    title: "Student Management System",
-    description: "Desktop application built with C++ for managing student records.",
-    details: ["CRUD operations", "File based storage", "Authentication", "Search and filtering"],
-    technologies: ["C++", "OOP", "File Handling"],
-    link: "#"
-  },
-  3: {
-    title: "AI Powered OS Monitoring System",
-    description: "Flask based monitoring dashboard with ML anomaly detection.",
-    details: ["Real-time CPU monitoring", "Isolation Forest anomaly detection", "Dashboard visualization", "Alert system"],
-    technologies: ["Python", "Flask", "Machine Learning"],
-    link: "#"
-  }
-};
-
-/* ========= 2. Project Modal Logic ========= */
-
-const modal = {
-  el: document.getElementById("projectModal"),
-  body: document.getElementById("modalBody"),
-  closeBtn: document.querySelector(".modal-close"),
-  
-  open(projectId) {
-    const data = PROJECT_DATA[projectId];
-    if (!data) return;
-
-    this.body.innerHTML = this.createTemplate(data);
-    this.el.classList.add("active");
-  },
-
-  close() {
-    this.el.classList.remove("active");
-  },
-
-  createTemplate(p) {
-    return `
-      <h2>${p.title}</h2>
-      <p style="color:var(--text-secondary); margin-bottom:15px;">${p.description}</p>
-      <ul>${p.details.map(d => `<li>${d}</li>`).join("")}</ul>
-      <div class="project-tech">${p.technologies.map(t => `<span>${t}</span>`).join("")}</div>
-      <div class="project-links">
-        <a href="${p.link}" target="_blank" class="btn btn-primary">Live Demo</a>
-        <a href="${p.link}" target="_blank" class="btn btn-outline">GitHub</a>
+async function loadSections() {
+  const app = document.getElementById("app");
+  try {
+    // Notify other scripts that DOM is ready to be manipulated
+    document.dispatchEvent(new Event("sectionsLoaded"));
+  } catch (error) {
+    console.error("Section loading failed:", error);
+    app.innerHTML += `
+      <div style="padding:40px;text-align:center;font-family:Inter;">
+        Failed to load portfolio sections.
       </div>
     `;
   }
-};
+}
 
-// Listeners
-document.querySelectorAll(".project-btn").forEach(btn => {
-  btn.addEventListener("click", () => modal.open(btn.dataset.project));
-});
+document.addEventListener("DOMContentLoaded", loadSections);
 
-modal.closeBtn.addEventListener("click", () => modal.close());
-window.addEventListener("click", (e) => e.target === modal.el && modal.close());
 
-/* ========= 3. Typing Animation ========= */
+/**
+ * animations.js
+ * Particle canvas background + 3D card tilt effect.
+ *
+ * Scroll reveal is handled purely by CSS @keyframes on .reveal classes —
+ * no IntersectionObserver needed. This keeps the system JS-independent
+ * and removes any race condition with dynamic section loading.
+ *
+ * initAnimations() is called after sectionsLoaded so tilt attaches
+ * to newly injected DOM elements.
+ */
 
-const typewriter = {
-  element: document.getElementById("typingText"),
-  phrases: [
-    "Building scalable cloud systems",
-    "Crafting elegant backend solutions",
-    "Exploring AI & Machine Learning",
-    "Optimizing performance at scale"
-  ],
-  phraseIdx: 0,
-  charIdx: 0,
-  isDeleting: false,
-
-  init() {
-    const currentPhrase = this.phrases[this.phraseIdx];
-    const { isDeleting, charIdx } = this;
-
-    this.element.textContent = currentPhrase.substring(0, isDeleting ? charIdx - 1 : charIdx + 1);
-    this.charIdx = isDeleting ? charIdx - 1 : charIdx + 1;
-
-    let delay = isDeleting ? 30 : 60;
-
-    if (!isDeleting && this.charIdx === currentPhrase.length) {
-      delay = 1500;
-      this.isDeleting = true;
-    } else if (isDeleting && this.charIdx === 0) {
-      this.isDeleting = false;
-      this.phraseIdx = (this.phraseIdx + 1) % this.phrases.length;
-    }
-
-    setTimeout(() => this.init(), delay);
-  }
-};
-
-window.addEventListener("load", () => typewriter.init());
-
-/* ========= 4. Navigation & UI Controls ========= */
-
-const nav = {
-  menu: document.getElementById("navMenu"),
-  hamburger: document.getElementById("hamburger"),
-  navbar: document.querySelector(".navbar"),
-
-  toggle() {
-    this.menu.classList.toggle("active");
-    this.hamburger.classList.toggle("active");
-  },
-
-  close() {
-    this.menu.classList.remove("active");
-    this.hamburger.classList.remove("active");
-  }
-};
-
-nav.hamburger.addEventListener("click", () => nav.toggle());
-
-// Smooth Scroll & Auto-close menu
-document.querySelectorAll(".nav-link").forEach(link => {
-  link.addEventListener("click", (e) => {
-    const targetId = link.getAttribute("href");
-    if (!targetId.startsWith("#")) return;
-
-    e.preventDefault();
-    document.querySelector(targetId)?.scrollIntoView({ behavior: "smooth" });
-    nav.close();
-  });
-});
-
-// Navbar Shrink on Scroll
-window.addEventListener("scroll", () => {
-  nav.navbar.classList.toggle("scrolled", window.scrollY > 50);
-});
-
-/* ========= 5. Tab System ========= */
-
-document.querySelectorAll(".tab-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const targetId = btn.dataset.tab;
-
-    // UI Update Helper
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
-
-    btn.classList.add("active");
-    document.getElementById(targetId).classList.add("active");
-  });
-});
-
-/* ========= 6. Background Particles ========= */
-
+/* ─── Particle Canvas ─── */
 class ParticleSystem {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
-    this.ctx = this.canvas.getContext("2d");
-    this.particles = [];
-    this.count = 30;
+    if (!this.canvas) return;
+    this.ctx    = this.canvas.getContext('2d');
+    this.count = window.innerWidth < 768 ? 15 : 40;
+    this.animId = null;
 
-    window.addEventListener("resize", () => this.setup());
+    this._resize = () => this.setup();
+    window.addEventListener('resize', this._resize, { passive: true });
     this.setup();
     this.animate();
   }
 
   setup() {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
+    this.canvas.width  = this.canvas.offsetWidth  || window.innerWidth;
+    this.canvas.height = this.canvas.offsetHeight || window.innerHeight;
     this.particles = Array.from({ length: this.count }, () => new Particle(this.canvas));
   }
 
   animate() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    const isDark = document.body.classList.contains('dark-theme');
     this.particles.forEach(p => {
       p.update();
-      p.draw(this.ctx);
+      p.draw(this.ctx, isDark);
     });
-    requestAnimationFrame(() => this.animate());
+    this.animId = requestAnimationFrame(() => this.animate());
   }
 }
 
@@ -196,79 +84,367 @@ class Particle {
   }
 
   reset() {
-    this.x = Math.random() * this.canvas.width;
-    this.y = Math.random() * this.canvas.height;
-    this.size = Math.random() * 2 + 1;
-    this.speedX = (Math.random() - 0.5) * 0.4;
-    this.speedY = (Math.random() - 0.5) * 0.4;
+    this.x       = Math.random() * this.canvas.width;
+    this.y       = Math.random() * this.canvas.height;
+    this.size    = Math.random() * 1.6 + 0.4;
+    this.speedX  = (Math.random() - 0.5) * 0.28;
+    this.speedY  = (Math.random() - 0.5) * 0.28;
+    this.opacity = Math.random() * 0.5 + 0.1;
   }
 
   update() {
     this.x += this.speedX;
     this.y += this.speedY;
-    if (this.x < 0 || this.x > this.canvas.width) this.speedX *= -1;
-    if (this.y < 0 || this.y > this.canvas.height) this.speedY *= -1;
+    if (this.x < 0 || this.x > this.canvas.width)  this.speedX *= -1;
+    if (this.y < 0 || this.y > this.canvas.height)  this.speedY *= -1;
   }
 
-  draw(ctx) {
-    const isDark = document.body.classList.contains("dark-theme");
-    ctx.fillStyle = isDark ? "rgba(102,126,234,0.6)" : "rgba(102,126,234,0.3)";
+  draw(ctx, isDark) {
+    ctx.globalAlpha = this.opacity;
+    ctx.fillStyle = isDark
+      ? 'rgba(102, 126, 234, 0.8)'
+      : 'rgba(102, 126, 234, 0.4)';
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();
+    // No ctx.shadowBlur = X -> drastically saves repaint costs
   }
 }
 
-new ParticleSystem("background-canvas");
+/* ─── 3D Card Tilt (delegated to avoid issues with dynamic content) ─── */
+function initTilt() {
+  document.querySelectorAll('.project-card, .skill-logo-card, .cert-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r  = card.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+      const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+      card.style.transform = `perspective(800px) rotateY(${dx * 5}deg) rotateX(${-dy * 5}deg) translateZ(4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
 
-/* ========= 7. Theme & Scroll Helpers ========= */
-
-const theme = {
-  btn: document.getElementById("themeToggle"),
-  icon: document.getElementById("themeIcon"),
-  sun: `<path d="M12 4.5a7.5 7.5 0 100 15 7.5 7.5 0 000-15z"/>`,
-  moon: `<path d="M21.64 13a9 9 0 11-10.6-10.6 7 7 0 0010.6 10.6z"/>`,
-
-  toggle() {
-    const isDark = document.body.classList.toggle("dark-theme");
-    this.icon.innerHTML = isDark ? this.moon : this.sun;
+/* ─── Init after sections are injected ─── */
+function initAnimations() {
+  // Particle system targets hero canvas — now scoped inside the hero section
+  if (document.getElementById('background-canvas')) {
+    new ParticleSystem('background-canvas');
   }
+  initTilt();
+}
+
+document.addEventListener('sectionsLoaded', initAnimations);
+
+
+/**
+ * interactions.js
+ * All DOM-dependent code lives inside the sectionsLoaded handler,
+ * which fires AFTER loader.js has injected all section HTML into #app.
+ *
+ * Script load order (index.html):
+ *   1. loader.js        → fetches sections, injects HTML, dispatches 'sectionsLoaded'
+ *   2. theme-toggle.js  → applies theme immediately (only touches <body> which exists)
+ *   3. animations.js    → listens for 'sectionsLoaded' → observers + tilt
+ *   4. interactions.js  → listens for 'sectionsLoaded' → this file
+ */
+
+/* ─── Project Data ─── */
+const PROJECT_DATA = {
+  1: {
+    title: 'Full-Stack E-Commerce Application',
+    description: 'A full-stack e-commerce platform built with Django featuring secure authentication, product browsing, cart management, and order processing.',
+    details: [
+      'User authentication & session management',
+      'Product catalog with search and filtering',
+      'Shopping cart & checkout workflow',
+      'Admin dashboard for inventory management',
+      'Relational database models (SQLite)',
+    ],
+    technologies: ['Django', 'Python', 'HTML', 'CSS', 'SQLite'],
+  },
+  2: {
+    title: 'Student Management System',
+    description: 'Desktop application built with C++ for managing student academic records with CRUD operations and file-based persistence.',
+    details: [
+      'Menu-driven interface for full CRUD operations',
+      'File-based persistent storage',
+      'Student search and record filtering',
+      'OOP design with modular architecture',
+    ],
+    technologies: ['C++', 'OOP', 'File Handling', 'Data Structures'],
+  },
+  3: {
+    title: 'AI-Powered OS Monitoring System',
+    description: 'Flask-based real-time monitoring dashboard with machine learning anomaly detection for system resources.',
+    details: [
+      'Real-time CPU, memory, and disk monitoring',
+      'Isolation Forest ML anomaly detection',
+      'Interactive dashboard visualisations',
+      'Automated threshold-based alerting',
+    ],
+    technologies: ['Python', 'Flask', 'Machine Learning', 'scikit-learn', 'Real-time'],
+  },
+  4: {
+    title: 'Scalable E-Commerce Architecture on AWS',
+    description: 'Production-grade cloud infrastructure for high-traffic e-commerce with auto-scaling and CDN optimisation.',
+    details: [
+      'EC2 auto-scaling groups for traffic spikes',
+      'CloudFront CDN for global edge caching',
+      'DynamoDB for high-throughput data storage',
+      'S3 for static asset hosting',
+      'Load balancer configuration and health checks',
+    ],
+    technologies: ['AWS EC2', 'S3', 'CloudFront', 'DynamoDB', 'IAM', 'Architecture'],
+  },
 };
 
-theme.btn.addEventListener("click", () => theme.toggle());
-
-const backToTop = document.getElementById("backToTop");
-window.addEventListener("scroll", () => {
-  backToTop.classList.toggle("show", window.scrollY > 500);
-});
-backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-
-// Scroll Reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => entry.isIntersecting && entry.target.classList.add("visible"));
-}, { threshold: 0.15 });
-
-document.querySelectorAll(".animate-on-scroll").forEach(el => observer.observe(el));
-
-async function loadProjects() {
-    const response = await fetch(
-        "https://raw.githubusercontent.com/shrenikkjainn/portfolio-data/main/projects.json"
-    );
-
-    const projects = await response.json();
-    const container = document.getElementById("projects-grid");
-
-    projects.forEach(project => {
-        const card = `
-        <div class="project-card">
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <span>${project.tech}</span>
-            <a href="${project.github}" target="_blank">GitHub</a>
-        </div>
-        `;
-        container.innerHTML += card;
-    });
+/* ─── Modal HTML builder ─── */
+function buildModalHTML(data) {
+  return `
+    <h2>${data.title}</h2>
+    <p>${data.description}</p>
+    <ul>${data.details.map(d => `<li>${d}</li>`).join('')}</ul>
+    <div class="project-tech">
+      ${data.technologies.map(t => `<span>${t}</span>`).join('')}
+    </div>
+    <div class="project-links">
+      <a href="#" class="btn btn-primary" onclick="return false;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>Live Demo
+      </a>
+      <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener" class="btn btn-outline">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" class="logo-dark" width="16" height="16" alt="GitHub">
+        GitHub
+      </a>
+    </div>
+  `;
 }
 
-loadProjects();
+/* ─── All UI initialisation (runs once sections are in DOM) ─── */
+function initAll() {
+  /* Remove loading state */
+  const loadingState = document.getElementById('loadingState');
+  if (loadingState) loadingState.remove();
+
+  /* ── Navbar scroll shrink ── */
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    let isTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!isTicking) {
+        window.requestAnimationFrame(() => {
+          navbar.classList.toggle('scrolled', window.scrollY > 60);
+          isTicking = false;
+        });
+        isTicking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* ── Back to Top ── */
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('show', window.scrollY > 500);
+    }, { passive: true });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ── Hamburger / Mobile Menu ── */
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('navMobile');
+  if (hamburger && navMobile) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = navMobile.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
+
+  /* ── Smooth scroll + mobile menu close on nav link click ── */
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const targetEl = document.querySelector(link.getAttribute('href'));
+    if (!targetEl) return;
+    e.preventDefault();
+    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (navMobile) {
+      navMobile.classList.remove('open');
+      hamburger?.classList.remove('active');
+    }
+  });
+
+  /* ── Typewriter ── */
+  const typingEl = document.getElementById('typingText');
+  if (typingEl) {
+    const phrases = [
+      'Building scalable cloud systems',
+      'Crafting elegant backend APIs',
+      'Exploring AI & Machine Learning',
+      'Designing distributed architectures',
+    ];
+    let phraseIdx = 0, charIdx = 0, isDeleting = false;
+
+    function tick() {
+      const phrase = phrases[phraseIdx];
+      charIdx = isDeleting ? charIdx - 1 : charIdx + 1;
+      typingEl.textContent = phrase.substring(0, charIdx);
+
+      let delay = isDeleting ? 30 : 58;
+      if (!isDeleting && charIdx === phrase.length) {
+        delay = 1800; isDeleting = true;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+        delay = 350;
+      }
+      setTimeout(tick, delay);
+    }
+    tick();
+  }
+
+  /* ── Tab System ── */
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById(btn.dataset.tab)?.classList.add('active');
+    });
+  });
+
+  /* ── Project Modal ── */
+  const modalEl   = document.getElementById('projectModal');
+  const modalBody = document.getElementById('modalBody');
+  const closeBtn  = document.querySelector('.modal-close');
+
+  function openModal(id) {
+    const data = PROJECT_DATA[id];
+    if (!data || !modalEl) return;
+    modalBody.innerHTML = buildModalHTML(data);
+    modalEl.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modalEl) return;
+    modalEl.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (modalEl) {
+    closeBtn?.addEventListener('click', closeModal);
+    modalEl.addEventListener('click', e => { if (e.target === modalEl) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  }
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.project));
+  });
+
+  /* ── Contact Form ── */
+  const form = document.querySelector('.contact-form');
+  if (form) {
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const original  = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span>Sending…</span>';
+      submitBtn.disabled = true;
+
+      await new Promise(r => setTimeout(r, 1400));
+
+      submitBtn.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg> Sent!`;
+      submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+
+      setTimeout(() => {
+        submitBtn.innerHTML = original;
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+        form.reset();
+      }, 3000);
+    });
+  }
+}
+
+/* ─── Listen for loader.js to finish injecting sections ─── */
+document.addEventListener('sectionsLoaded', initAll);
+
+
+/**
+ * theme-toggle.js
+ * Applies theme immediately on load (body always exists),
+ * then hooks button/icon after sections are injected by loader.js.
+ */
+
+(function () {
+  const STORAGE_KEY = 'portfolio-theme';
+  const DARK_CLASS  = 'dark-theme';
+
+  const SUN_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>`;
+
+  const MOON_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>`;
+
+  /* ── Apply theme to <body> immediately — works before any section HTML loads ── */
+  function applyTheme(isDark) {
+    document.body.classList.toggle(DARK_CLASS, isDark);
+    localStorage.setItem(STORAGE_KEY, isDark ? 'dark' : 'light');
+    // Update icon if button already in DOM (deferred call may call this again)
+    const icon = document.getElementById('themeIcon');
+    if (icon) icon.innerHTML = isDark ? MOON_SVG : SUN_SVG;
+  }
+
+  // Determine initial theme and apply right away
+  const stored      = localStorage.getItem(STORAGE_KEY);
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initDark    = stored ? stored === 'dark' : prefersDark;
+  applyTheme(initDark);
+
+  /* ── Wire button AFTER sections are loaded ── */
+  function bindButton() {
+    const btn  = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    if (!btn) return;
+
+    // Set the correct icon for current state
+    if (icon) icon.innerHTML = document.body.classList.contains(DARK_CLASS) ? MOON_SVG : SUN_SVG;
+
+    btn.addEventListener('click', () => {
+      applyTheme(!document.body.classList.contains(DARK_CLASS));
+    });
+  }
+
+  // loader.js dispatches 'sectionsLoaded' once navbar HTML is in DOM
+  document.addEventListener('sectionsLoaded', bindButton);
+
+  // OS-level change — only if no stored preference
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem(STORAGE_KEY)) applyTheme(e.matches);
+  });
+})();

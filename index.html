@@ -1,927 +1,1355 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Shrenik Jain - Cloud & Backend Developer | AWS | Django |"
-    />
-    <meta name="theme-color" content="#0f0f23" />
-    <title>Shrenik Jain - Portfolio</title>
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
+  <meta name="description"
+    content="Shrenik Jain – Cloud & Backend Developer. AWS · Django · Docker · Kubernetes · Machine Learning." />
 
-  <body>
-    <!-- PROJECT DETAILS MODAL -->
+  <meta name="keywords"
+    content="Shrenik Jain, Cloud Developer, Backend Developer, AWS, Django, Docker, Kubernetes, Python" />
 
-    <div id="projectModal" class="project-modal">
-      <div class="project-modal-card">
-        <span class="modal-close">&times;</span>
+  <meta name="author" content="Shrenik Jain" />
+  <meta name="theme-color" content="#667eea" />
 
-        <div id="modalBody"></div>
-      </div>
-    </div>
-    <canvas id="background-canvas"></canvas>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <a href="#home">Shrenik Jain</a>
-        </div>
+  <title>Shrenik Jain – Cloud & Backend Developer</title>
 
-        <ul class="nav-menu" id="navMenu">
-          <li class="nav-item">
-            <a href="#home" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="#about" class="nav-link">About</a>
-          </li>
-          <li class="nav-item">
-            <a href="#skills" class="nav-link">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a href="#projects" class="nav-link">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a href="#certifications" class="nav-link">Certifications</a>
-          </li>
-          <li class="nav-item">
-            <a href="#resume" class="nav-link">Resume</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contact" class="nav-link">Contact</a>
-          </li>
-        </ul>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-        <!-- Theme Toggle -->
-        <div class="theme-toggle" id="themeToggle">
-          <svg
-            id="themeIcon"
-            viewBox="0 0 24 24"
-            width="22"
-            height="22"
-            fill="currentColor"
-          >
-            <path d="M12 4.5a7.5 7.5 0 100 15 7.5 7.5 0 000-15z" />
-          </svg>
-        </div>
+<body>
 
-        <!-- Hamburger -->
-        <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </nav>
+  <!-- GLOBAL BACKGROUND -->
+  <div id="global-bg" aria-hidden="true">
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+  </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-wrapper">
-        <!-- LEFT: Profile Image -->
-        <div class="hero-image">
-          <img src="assets/profile.jpg" alt="Shrenik Jain" />
-        </div>
 
-        <!-- RIGHT: Content -->
-        <div class="hero-content">
-          <h1 class="hero-title">
-            Hi, I'm <span class="gradient-text">Shrenik Jain</span>
-          </h1>
+  <!-- MAIN APP (sections injected here) -->
+  <div id="app">
 
-          <p class="hero-subtitle">
-            Cloud & Backend Developer | AWS | Docker | Kubernetes | Django |
-            DevOps
-          </p>
+    <!-- Loading screen -->
+    <div id="loadingState" style="
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        min-height:100vh;
+        font-family:'Inter',sans-serif;
+        background:var(--clr-bg,#f0f2ff);
+        color:var(--clr-text-muted,#666);
+        font-size:0.9rem;
+        flex-direction:column;
+        gap:12px;
+      ">
 
-          <div class="typing-container">
-            <span class="typing-text" id="typingText"></span>
-            <span class="cursor"></span>
-          </div>
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2"
+        style="animation:spin 1s linear infinite">
 
-          <!-- Buttons + Social Icons -->
-          <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary"> View My Projects </a>
+        <path
+          d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
 
-            <a href="#contact" class="btn btn-secondary"> Get In Touch </a>
+      </svg>
 
-            <div class="social-links">
-              <!-- GitHub -->
-              <a
-                href="https://github.com/shrenikkjainn"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-icon"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 
-                            8.205 11.385.6.105.825-.255.825-.57 
-                            0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41
-                            -.135-.345-.72-1.41-1.23-1.695
-                            -.42-.225-1.02-.78-.015-.795.945-.015 
-                            1.62.87 1.845 1.23 1.08 1.815 
-                            2.805 1.305 3.495.99.105-.78.42-1.305 
-                            .765-1.605-2.67-.3-5.46-1.335-5.46-5.925 
-                            0-1.305.465-2.385 1.23-3.225
-                            -.12-.3-.54-1.53.12-3.18 
-                            0 0 1.005-.315 3.3 1.23.96-.27 
-                            1.98-.405 3-.405s2.04.135 
-                            3 .405c2.295-1.56 3.3-1.23 
-                            3.3-1.23.66 1.65.24 2.88.12 
-                            3.18.765.84 1.23 1.905 1.23 3.225 
-                            0 4.605-2.805 5.625-5.475 5.925.435.375 
-                            .81 1.095.81 2.22 0 1.605-.015 
-                            2.895-.015 3.3 0 .315.225.69 
-                            .825.57A12.001 12.001 0 0024 
-                            12c0-6.63-5.37-12-12-12z"
-                  />
-                </svg>
-              </a>
+      <span>Loading portfolio…</span>
 
-              <!-- LinkedIn -->
-              <a
-                href="https://linkedin.com/in/shrenikkjainn"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-icon"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M20.447 20.452h-3.554v-5.569
-                            c0-1.328-.475-2.236-1.986-2.236
-                            -1.081 0-1.722.731-2.004 1.438
-                            -.103.25-.129.599-.129.948v5.419h-3.554
-                            s.05-8.736 0-9.646h3.554v1.364
-                            c.43-.664 1.196-1.608 2.906-1.608
-                            2.121 0 3.713 1.387 3.713 
-                            4.365v5.525zM5.337 8.855
-                            c-1.144 0-1.915-.758-1.915-1.704
-                            0-.951.77-1.704 1.968-1.704
-                            1.197 0 1.915.75 1.948 
-                            1.704 0 .946-.751 
-                            1.704-1.968 1.704zm1.529 
-                            11.597H3.808V9.856h3.058v10.596z"
-                  />
-                </svg>
-              </a>
-
-              <!-- Email -->
-              <a href="mailto:shrenikjainwos@gmail.com" class="social-icon">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                  <path
-                    d="m22 7-8.97 5.7
-                                a1.94 1.94 0 0 1-2.06 0L2 7"
-                  ></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about animate-on-scroll">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-
-        <div class="about-content">
-          <div class="about-text">
-            <p>
-              I am a Computer Science and Engineering student at Lovely
-              Professional University (CGPA: 7.43) with a strong foundation in
-              backend development, cloud computing, and machine learning. I
-              enjoy building scalable systems that are secure,
-              performance-optimized, and production-ready.
-            </p>
-
-            <p>
-              My technical interests lie in cloud architecture, distributed
-              systems, and intelligent backend solutions. I have hands-on
-              experience working with AWS services (EC2, S3, DynamoDB,
-              CloudFront), Django, Flask, Docker, and REST APIs. I focus on
-              writing clean, modular, and efficient code following strong OOP
-              and system design principles.
-            </p>
-
-            <p>
-              Beyond academics, I am deeply passionate about development and
-              continuously explore new technologies in DevOps, AI, and scalable
-              infrastructure. I actively practice Data Structures & Algorithms
-              to strengthen problem-solving and system optimization skills.
-            </p>
-
-            <p>
-              Apart from technology, I am a car enthusiast. I enjoy learning
-              about automotive engineering, performance tuning, and the
-              evolution of modern vehicles. My interest in automobiles reflects
-              my appreciation for precision engineering, efficiency, and
-              innovation — values I also apply in software development.
-            </p>
-
-            <p>
-              I aim to grow as a Cloud & Backend Engineer, contributing to
-              impactful projects that combine innovation, scalability, and
-              intelligent system design.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills animate-on-scroll">
-      <div class="container">
-        <h2 class="section-title">Skills & Expertise</h2>
-
-        <div class="skills-modern-grid">
-          <div class="skill-card">
-            <h3>Cloud & DevOps</h3>
-            <div class="skill-tags">
-              <span>AWS</span>
-              <span>EC2</span>
-              <span>S3</span>
-              <span>IAM</span>
-              <span>RDS</span>
-              <span>Docker</span>
-              <span>Kubernetes</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <h3>Backend Development</h3>
-            <div class="skill-tags">
-              <span>Python</span>
-              <span>Django</span>
-              <span>Flask</span>
-              <span>REST APIs</span>
-              <span>Authentication</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <h3>Database & Tools</h3>
-            <div class="skill-tags">
-              <span>MySQL</span>
-              <span>PostgreSQL</span>
-              <span>Git</span>
-              <span>GitHub</span>
-              <span>VS Code</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <h3>Core Concepts</h3>
-            <div class="skill-tags">
-              <span>System Design</span>
-              <span>OOP</span>
-              <span>Data Structures</span>
-              <span>Algorithms</span>
-              <span>Cloud Architecture</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects animate-on-scroll">
-      <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
-
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <div class="project-card">
-            <div class="project-image">
-                <img src="assets/ecommerce.png" alt="Ecommerce Project" />
-            </div>
-            <div class="project-content">
-              <h3>Full-Stack Ecommerce Application</h3>
-              <p>
-                A full-stack e-commerce web application that allows users to
-                browse products, add items to cart, and place orders with secure
-                authentication.
-              </p>
-              <div class="project-tags">
-                <span class="tag">Django</span>
-                <span class="tag">Sqlite</span>
-                <span class="tag">HTML</span>
-                <span class="tag">CSS</span>
-              </div>
-              <button
-                class="btn btn-small btn-outline project-btn"
-                data-project="1"
-              >
-                View Details
-              </button>
-            </div>
-          </div>
-          <!-- Project 2 -->
-          <div class="project-card">
-            <div class="project-image">
-              <img src="assets/student-system.png" alt="Student Management System" />
-            </div>
-            <div class="project-content">
-              <h3>Student Management System</h3>
-              <p>
-                A comprehensive desktop application built with C++ for managing
-                student records, grades, and academic performance. Features
-                include data persistence and intuitive UI.
-              </p>
-              <div class="project-tags">
-                <span class="tag">C++</span>
-                <span class="tag">Database</span>
-                <span class="tag">Desktop App</span>
-              </div>
-              <button
-                class="btn btn-small btn-outline project-btn"
-                data-project="2"
-              >
-                View Details
-              </button>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project-card">
-            <div class="project-image">
-  <img src="assets/os-monitor.png" alt="AI Monitoring System" />
-</div>
-            <div class="project-content">
-              <h3>AI-Powered OS Monitoring System</h3>
-              <p>
-                Intelligent system monitoring platform using Flask and machine
-                learning. Predicts system failures, monitors resource usage, and
-                provides real-time alerts with beautiful dashboards.
-              </p>
-              <div class="project-tags">
-                <span class="tag">Python</span>
-                <span class="tag">Flask</span>
-                <span class="tag">ML</span>
-                <span class="tag">Real-time</span>
-              </div>
-              <button
-                class="btn btn-small btn-outline project-btn"
-                data-project="3"
-              >
-                View Details
-              </button>
-            </div>
-          </div>
-
-          <!-- Project 4 -->
-          <div class="project-card">
-            <div class="project-image">
-  <img src="assets/aws-architecture.png" alt="AWS Architecture" />
-</div>
-            <div class="project-content">
-              <h3>Scalable E-Commerce Architecture</h3>
-              <p>
-                Production-grade e-commerce infrastructure on AWS featuring
-                auto-scaling, CDN optimization, and serverless functions.
-                Handles millions of transactions with high availability.
-              </p>
-              <div class="project-tags">
-                <span class="tag">AWS</span>
-                <span class="tag">Architecture</span>
-                <span class="tag">Scalability</span>
-                <span class="tag">DevOps</span>
-              </div>
-              <button
-                class="btn btn-small btn-outline project-btn"
-                data-project="4"
-              >
-                View Details
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications animate-on-scroll">
-      <div class="container">
-        <h2 class="section-title">Certifications & Training</h2>
-
-        <div class="certifications-grid">
-
-<a href="https://www.credly.com/go/1ihYekpx" target="_blank" class="cert-card">
-<div class="cert-overlay">View Certificate →</div>
-<div class="cert-icon">☁️</div>
-<h3>AWS Academy – Cloud Architecting</h3>
-<p>AWS Academy Badge</p>
-<span class="cert-year">Feb 2026</span>
-</a>
-
-<a href="https://drive.google.com/file/d/1wSdrpEmpqXrcy1vMJA0QAjUR3ufvAi0F/view?usp=drive_link" target="_blank" class="cert-card">
-<div class="cert-overlay">View Certificate →</div>
-<div class="cert-icon">📡</div>
-<h3>NPTEL Elite – Introduction to IoT</h3>
-<p>IIT Kharagpur</p>
-<span class="cert-year">Oct 2025</span>
-</a>
-
-<a href="https://drive.google.com/file/d/13wBH3whZ5aeWaQYqNh36V8wGamc-xx42/view?usp=drive_link" target="_blank" class="cert-card">
-<div class="cert-overlay">View Certificate →</div>
-<div class="cert-icon">🧠</div>
-<h3>ChatGPT Prompt Engineering</h3>
-<p>Generative AI</p>
-<span class="cert-year">Aug 2025</span>
-</a>
-
-<a href="https://drive.google.com/file/d/1l5i94II0fqoUknnBP1kp9kkKECUrR2i6/view?usp=drive_link" target="_blank" class="cert-card">
-<div class="cert-overlay">View Certificate →</div>
-<div class="cert-icon">🤖</div>
-<h3>Build Generative AI Apps & Solutions</h3>
-<p>Udemy</p>
-<span class="cert-year">Aug 2025</span>
-</a>
-
-<a href="https://drive.google.com/file/d/1CtLsLH6vFi_qCL69CN6VWRdlsB_HH37H/view?usp=drive_link" target="_blank" class="cert-card">
-  <div class="cert-overlay">View Certificate →</div>
-  <div class="cert-icon">🤖</div>
-  <h3>Master Generative AI & Generative AI Tools</h3>
-  <p>Udemy</p>
-  <span class="cert-year">Aug 2025</span>
-</a>
-
-<a href="https://www.coursera.org/account/accomplishments/verify/QZJW31HQL3U0" target="_blank" class="cert-card">
-<div class="cert-overlay">View Certificate →</div>
-<div class="cert-icon">💻</div>
-<h3>Introduction to Hardware & Operating Systems</h3>
-<p>IBM – Coursera</p>
-<span class="cert-year">Sep 2024</span>
-</a>
-
-<a href="https://www.coursera.org/account/accomplishments/verify/9H8HNC2XHUXY" target="_blank" class="cert-card">
-<div class="cert-overlay">View Certificate →</div>
-<div class="cert-icon">🌐</div>
-<h3>Fundamentals of Network Communication</h3>
-<p>Coursera</p>
-<span class="cert-year">Sep 2024</span>
-</a>
-
-<a href="https://coursera.org/verify/LZRVG0WKX8Z8" target="_blank" class="cert-card">
-<div class="cert-overlay">View Certificate →</div>
-<div class="cert-icon">🌐</div>
-<h3>The Bits and Bytes of Computer Networking</h3>
-<p>Google – Coursera</p>
-<span class="cert-year">Sep 2024</span>
-</a>
-
-</div>
-      </div>
-      
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="resume animate-on-scroll">
-      <div class="resume-container">
-        <!-- HEADER -->
-
-        <div class="resume-header">
-          <h2 class="section-title">My Resume</h2>
-
-          <div class="resume-contact-tags">
-            <a href="mailto:shrenikjainwos@gmail.com" class="contact-tag">
-              <span>📧 shrenikjainwos@gmail.com</span>
-            </a>
-
-            <a href="tel:+919914220785" class="contact-tag">
-              <span>📱 +91 9914220785</span>
-            </a>
-
-            <a
-              href="https://linkedin.com/in/shrenikkjainn"
-              target="_blank"
-              class="contact-tag"
-            >
-              <span>🔗 LinkedIn</span>
-            </a>
-
-            <a
-              href="https://github.com/shrenikkjainn"
-              target="_blank"
-              class="contact-tag"
-            >
-              <span>💻 GitHub</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- TABS -->
-
-        <div class="resume-tabs">
-          <button class="tab-btn active" data-tab="education">Education</button>
-          <button class="tab-btn" data-tab="skills-tab">Skills</button>
-          <button class="tab-btn" data-tab="projects-tab">Projects</button>
-          <button class="tab-btn" data-tab="training">Training</button>
-          <button class="tab-btn" data-tab="certificates-tab">
-            Certificates
-          </button>
-        </div>
-
-        <div class="resume-content">
-          <!-- EDUCATION -->
-
-          <div class="tab-content active" id="education">
-
-  <!-- LPU -->
-  <div class="resume-card">
-    <div class="resume-card-header">
-      <div>
-        <h3 class="resume-card-title">Lovely Professional University</h3>
-        <p class="resume-card-subtitle">Punjab, India</p>
-      </div>
-      <span class="resume-card-date">Since 2023</span>
     </div>
 
-    <div class="resume-card-body">
-      <p>Bachelor of Technology – Computer Science Engineering</p>
-      <p><strong>CGPA: 7.43</strong></p>
+<!-- sections/navbar.html -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="nav-logo">
+      <a href="#home" aria-label="Shrenik Jain Home">SJ</a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <ul class="nav-menu" id="navMenu" role="list">
+      <li class="nav-item"><a href="#home"           class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="#about"          class="nav-link">About</a></li>
+      <li class="nav-item"><a href="#skills"         class="nav-link">Skills</a></li>
+      <li class="nav-item"><a href="#projects"       class="nav-link">Projects</a></li>
+      <li class="nav-item"><a href="#certifications" class="nav-link">Certs</a></li>
+      <li class="nav-item"><a href="#resume"         class="nav-link">Resume</a></li>
+      <li class="nav-item"><a href="#contact"        class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Right controls -->
+    <div class="nav-controls">
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+        <span id="themeIcon"></span>
+      </button>
+
+      <!-- Hamburger -->
+      <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </div>
 
-  <!-- Intermediate -->
-  <div class="resume-card">
-    <div class="resume-card-header">
-      <div>
-        <h3 class="resume-card-title">SD Senior Secondary School</h3>
-        <p class="resume-card-subtitle">Hoshiarpur, Punjab</p>
-      </div>
-      <span class="resume-card-date">Apr 2022 – May 2023</span>
-    </div>
-
-    <div class="resume-card-body">
-      <p>Intermediate</p>
-      <p><strong>Percentage: 82%</strong></p>
-    </div>
+  <!-- Mobile Menu -->
+  <div class="nav-mobile" id="navMobile" role="menu">
+    <a href="#home"           class="nav-link" role="menuitem">Home</a>
+    <a href="#about"          class="nav-link" role="menuitem">About</a>
+    <a href="#skills"         class="nav-link" role="menuitem">Skills</a>
+    <a href="#projects"       class="nav-link" role="menuitem">Projects</a>
+    <a href="#certifications" class="nav-link" role="menuitem">Certifications</a>
+    <a href="#resume"         class="nav-link" role="menuitem">Resume</a>
+    <a href="#contact"        class="nav-link" role="menuitem">Contact</a>
   </div>
+</nav>
 
-  <!-- Matriculation -->
-  <div class="resume-card">
-    <div class="resume-card-header">
-      <div>
-        <h3 class="resume-card-title">Woodland Overseas School</h3>
-        <p class="resume-card-subtitle">Hoshiarpur, Punjab</p>
+<!-- sections/hero.html -->
+
+<section id="home" class="hero">
+
+  <!-- Particle Canvas clipped inside Hero -->
+  <canvas id="background-canvas" class="hero-canvas"></canvas>
+
+  <div class="hero-wrapper container">
+
+    <!-- Profile Image -->
+    <div class="hero-image reveal-scale">
+
+      <div class="hero-image-glow"></div>
+
+      <div class="hero-image-ring">
+        <img src="assets/profile.jpg" alt="Shrenik Jain" loading="eager" decoding="async" fetchpriority="high">
       </div>
-      <span class="resume-card-date">Apr 2020 – Mar 2021</span>
-    </div>
 
-    <div class="resume-card-body">
-      <p>Matriculation</p>
-      <p><strong>Percentage: 89.2%</strong></p>
-    </div>
-  </div>
+      <!-- Floating Tech Badges -->
+      <div class="hero-tech-badges">
 
-</div>
-
-          <!-- SKILLS -->
-
-          <div class="tab-content" id="skills-tab">
-            <div class="resume-card">
-              <h3 class="resume-card-title" style="margin-bottom: 20px">
-                Technical Skills
-              </h3>
-
-              <div class="resume-card-body">
-                <div
-                  class="skills-modern-grid"
-                  style="grid-template-columns: repeat(2, 1fr); gap: 20px"
-                >
-                  <div>
-                    <p class="resume-card-subtitle">Languages</p>
-                    <div class="skill-tags">
-                      <span>C++</span>
-                      <span>Python</span>
-                      <span>Java</span>
-                      <span>SQL</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p class="resume-card-subtitle">Frameworks</p>
-                    <div class="skill-tags">
-                      <span>Django</span>
-                      <span>Flask</span>
-                      <span>REST APIs</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p class="resume-card-subtitle">Tools / Platforms</p>
-                    <div class="skill-tags">
-                      <span>AWS</span>
-                      <span>Docker</span>
-                      <span>Kubernetes</span>
-                      <span>Git</span>
-                      <span>Linux</span>
-                      <span>Postman</span>
-                      <span>MySQL Workbench</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p class="resume-card-subtitle">Core Fundamentals</p>
-                    <div class="skill-tags">
-                      <span>Data Structures</span>
-                      <span>DBMS</span>
-                      <span>OOP</span>
-                      <span>Operating Systems</span>
-                      <span>Computer Networks</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- PROJECTS -->
-
-          <div class="tab-content" id="projects-tab">
-
-<!-- Ecommerce -->
-<div class="resume-card">
-
-<div class="resume-card-header">
-<div>
-<h3 class="resume-card-title">
-Full-Stack E-Commerce Application
-</h3>
-<p class="resume-card-subtitle">
-Django, SQLite, HTML/CSS
-</p>
-</div>
-<span class="resume-card-date">Feb 2026</span>
-</div>
-
-<div class="resume-card-body">
-<ul>
-<li>Developed a database-driven e-commerce platform using Django.</li>
-<li>Implemented secure authentication, session management, and order workflow.</li>
-<li>Designed relational models for products, carts, and order processing.</li>
-</ul>
-</div>
-
-</div>
-
-
-<!-- Student Management -->
-<div class="resume-card">
-
-<div class="resume-card-header">
-<div>
-<h3 class="resume-card-title">
-Student Management System
-</h3>
-<p class="resume-card-subtitle">
-C++, File Handling
-</p>
-</div>
-<span class="resume-card-date">Jun 2025</span>
-</div>
-
-<div class="resume-card-body">
-<ul>
-<li>Built a menu-driven application for managing student academic records.</li>
-<li>Implemented CRUD operations using file-based data storage.</li>
-<li>Enabled efficient data retrieval and secure record modification.</li>
-</ul>
-</div>
-
-</div>
-
-
-<!-- AI Monitoring -->
-<div class="resume-card">
-
-<div class="resume-card-header">
-<div>
-<h3 class="resume-card-title">
-AI-Powered OS Monitoring System
-</h3>
-<p class="resume-card-subtitle">
-Python, Flask, Machine Learning
-</p>
-</div>
-<span class="resume-card-date">Mar 2025</span>
-</div>
-
-<div class="resume-card-body">
-<ul>
-<li>Developed a real-time monitoring dashboard using Flask.</li>
-<li>Implemented anomaly detection using the Isolation Forest ML algorithm.</li>
-<li>Visualized CPU, memory, and disk usage with automated alerts.</li>
-</ul>
-</div>
-
-</div>
-
-
-<!-- AWS Architecture -->
-<div class="resume-card">
-
-<div class="resume-card-header">
-<div>
-<h3 class="resume-card-title">
-Scalable E-Commerce Architecture on AWS
-</h3>
-<p class="resume-card-subtitle">
-AWS EC2, S3, CloudFront, DynamoDB
-</p>
-</div>
-<span class="resume-card-date">Apr 2025</span>
-</div>
-
-<div class="resume-card-body">
-<ul>
-<li>Designed a scalable cloud architecture for high-traffic e-commerce workloads.</li>
-<li>Integrated EC2, S3, CloudFront, and DynamoDB for distributed infrastructure.</li>
-<li>Configured CDN caching and optimized system availability.</li>
-</ul>
-</div>
-
-</div>
-
-</div>
-
-          <!-- TRAINING -->
-
-          <div class="tab-content" id="training">
-            <div class="resume-card">
-              <div class="resume-card-header">
-                <div>
-                  <h3 class="resume-card-title">
-                    C++ Programming – OOPs & DSA
-                  </h3>
-                  <p class="resume-card-subtitle">CSE Pathshala</p>
-                </div>
-                <span class="resume-card-date">Jun 2025 – Jul 2025</span>
-              </div>
-
-              <div class="resume-card-body">
-                <ul>
-                  <li>
-                    Implemented Trees, Hash Maps, and Searching Algorithms.
-                  </li>
-                  <li>Applied OOP principles to build modular C++ applications.</li>
-                  <li>Strengthened problem-solving skills with DSA practice.</li>
-                  <li>Developed a strong foundation in C++ syntax, STL, and best practices.
-                  </li>
-                  <li>Completed coding challenges to optimize algorithmic efficiency.
-                  </li>
-                </ul>
-              </div>
-            </div>
-</div>
-        
-
-          <!-- CERTIFICATES -->
-<div class="tab-content" id="certificates-tab">
-
-<div class="resume-card">
-<div class="resume-card-header">
-<h3 class="resume-card-title">AWS Academy Graduate – Cloud Architecting</h3>
-<span class="resume-card-date">Feb 2026</span>
-</div>
-<p class="resume-card-subtitle">AWS Academy</p>
-</div>
-
-<div class="resume-card">
-<div class="resume-card-header">
-<h3 class="resume-card-title">NPTEL Elite – Introduction to Internet of Things</h3>
-<span class="resume-card-date">Oct 2025</span>
-</div>
-<p class="resume-card-subtitle">IIT Kharagpur</p>
-</div>
-
-<div class="resume-card">
-<div class="resume-card-header">
-<h3 class="resume-card-title">Master Generative AI & LLM Tools</h3>
-<span class="resume-card-date">Aug 2025</span>
-</div>
-<p class="resume-card-subtitle">Udemy</p>
-</div>
-
-<div class="resume-card">
-<div class="resume-card-header">
-<h3 class="resume-card-title">Introduction to Hardware & Operating Systems</h3>
-<span class="resume-card-date">Sep 2024</span>
-</div>
-<p class="resume-card-subtitle">IBM – Coursera</p>
-</div>
-
-<div class="resume-card">
-<div class="resume-card-header">
-<h3 class="resume-card-title">Fundamentals of Network Communication</h3>
-<span class="resume-card-date">Sep 2024</span>
-</div>
-<p class="resume-card-subtitle">Coursera</p>
-</div>
-
-</div>
-          
+        <div class="tech-badge">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="28" height="28" alt="AWS">
+          AWS
         </div>
 
-        <!-- DOWNLOAD -->
+        <div class="tech-badge">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" class="logo-dark" width="28" height="28" alt="Django">
+          Django
+        </div>
 
-        <div class="resume-download">
-          <a href="assets/CV final.pdf" class="btn btn-primary" download>
-            📥 Download Full Resume
+        <div class="tech-badge">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" width="28" height="28" alt="Docker">
+          Docker
+        </div>
+
+        <div class="tech-badge">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="28" height="28" alt="Python">
+          Python
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- HERO CONTENT -->
+    <div class="hero-content">
+
+      <!-- Status Pill -->
+      <div class="hero-intro">
+        <span class="dot"></span>
+        Open to Opportunities
+      </div>
+
+
+      <!-- Title -->
+      <h1 class="hero-title">
+        Hi, I'm <span class="hero-name">Shrenik Jain</span>
+      </h1>
+
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle">
+        Cloud & Backend Developer building scalable systems with
+        <strong>AWS · Django · Docker · Kubernetes</strong>
+      </p>
+
+
+      <!-- Typing Animation -->
+      <div class="hero-typing">
+        <span class="hero-typing-prefix">$ run</span>
+        <span id="typingText"></span>
+        <span class="cursor"></span>
+      </div>
+
+
+      <!-- Buttons -->
+      <div class="hero-buttons">
+
+        <a href="#projects" class="btn btn-primary">
+          View Projects
+        </a>
+
+        <a href="assets/CV final.pdf" class="btn btn-secondary" download>
+          Download CV
+        </a>
+
+      </div>
+
+
+      <!-- Social Icons -->
+      <div class="social-links">
+
+  <a href="https://github.com/shrenikkjainn"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="social-icon"
+     aria-label="GitHub">
+
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.25.82-.56 0-.28-.01-1.03-.02-2.02-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.1-.75.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.08 1.85 2.82 1.32 3.51 1.01.11-.78.42-1.32.76-1.62-2.67-.3-5.47-1.33-5.47-5.9 0-1.3.46-2.36 1.22-3.19-.12-.3-.53-1.51.11-3.14 0 0 1-.32 3.3 1.22a11.5 11.5 0 0 1 6 0c2.3-1.54 3.3-1.22 3.3-1.22.64 1.63.23 2.84.11 3.14.76.83 1.22 1.89 1.22 3.19 0 4.58-2.8 5.59-5.48 5.88.43.37.81 1.1.81 2.22 0 1.61-.02 2.9-.02 3.29 0 .31.21.67.83.56C20.57 21.79 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+    </svg>
+
+  </a>
+
+
+  <a href="https://linkedin.com/in/shrenikkjainn"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="social-icon"
+     aria-label="LinkedIn">
+
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.45 20.45h-3.55v-5.56c0-1.33-.48-2.24-1.99-2.24-1.08 0-1.72.73-2 1.44-.1.25-.13.6-.13.95v5.41H9.23s.05-8.73 0-9.64h3.55v1.36c.43-.66 1.19-1.6 2.9-1.6 2.12 0 3.72 1.38 3.72 4.36v5.52zM5.34 8.85c-1.15 0-1.92-.76-1.92-1.7 0-.95.77-1.7 1.97-1.7 1.2 0 1.92.75 1.95 1.7 0 .94-.75 1.7-2 1.7zM6.87 20.45H3.81V9.85h3.06v10.6z"/>
+    </svg>
+
+  </a>
+
+
+  <a href="mailto:shrenikjainwos@gmail.com"
+     class="social-icon"
+     aria-label="Email">
+
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="M22 7L12 13 2 7"/>
+    </svg>
+
+  </a>
+
+</div>
+
+    </div>
+  </div>
+
+
+  <!-- Scroll Indicator -->
+  <div class="hero-scroll">
+    <div class="scroll-mouse">
+      <div class="scroll-wheel"></div>
+    </div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+
+</section>
+<!-- sections/about.html -->
+<section id="about" class="about section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Who I Am</h2>
+    </div>
+
+    <div class="about-grid">
+      <!-- Main text card -->
+      <div class="about-text-card reveal">
+        <p>
+          I am a <strong>Computer Science and Engineering</strong> student at Lovely
+          Professional University (CGPA: 7.43) with a strong foundation in
+          backend development, cloud computing, and machine learning. I
+          enjoy building scalable systems that are secure,
+          performance-optimized, and production-ready.
+        </p>
+        <p>
+          My technical interests lie in cloud architecture, distributed
+          systems, and intelligent backend solutions. I have hands-on
+          experience working with <strong>AWS services</strong> (EC2, S3, DynamoDB,
+          CloudFront), Django, Flask, Docker, and REST APIs. I focus on
+          writing clean, modular, and efficient code following strong OOP
+          and system design principles.
+        </p>
+        <p>
+          Beyond academics, I am deeply passionate about development and
+          continuously explore new technologies in DevOps, AI, and scalable
+          infrastructure. I actively practice Data Structures &amp; Algorithms
+          to strengthen problem-solving and system optimization skills.
+        </p>
+        <p>
+          Apart from technology, I am a <strong>car enthusiast</strong>. I enjoy learning
+          about automotive engineering, performance tuning, and the
+          evolution of modern vehicles — values of precision, efficiency,
+          and innovation that I also apply in software development.
+        </p>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="about-sidebar">
+        <div class="about-stat-card reveal stagger-1">
+          <div class="about-stat-icon">🎓</div>
+          <div class="about-stat-info">
+            <h4>B.Tech CSE</h4>
+            <p>Lovely Professional University · CGPA 7.43</p>
+          </div>
+        </div>
+
+        <div class="about-stat-card reveal stagger-2">
+          <div class="about-stat-icon">☁️</div>
+          <div class="about-stat-info">
+            <h4>Cloud Focus</h4>
+            <p>AWS Certified Graduate · Cloud Architecting</p>
+          </div>
+        </div>
+
+        <div class="about-stat-card reveal stagger-3">
+          <div class="about-stat-icon">🤖</div>
+          <div class="about-stat-info">
+            <h4>AI / ML</h4>
+            <p>Isolation Forest · Generative AI · LLMs</p>
+          </div>
+        </div>
+
+        <div class="about-stat-card reveal stagger-4">
+          <div class="about-stat-icon">📍</div>
+          <div class="about-stat-info">
+            <h4>Location</h4>
+            <p>Punjab, India</p>
+          </div>
+        </div>
+
+        <!-- Interests -->
+        <div class="about-interests reveal stagger-5">
+          <h4>Interests</h4>
+          <div class="interest-chips">
+            <span class="interest-chip">☁️ Cloud Architecture</span>
+            <span class="interest-chip">🐳 DevOps</span>
+            <span class="interest-chip">🤖 AI / ML</span>
+            <span class="interest-chip">🏎️ Automotive</span>
+            <span class="interest-chip">⚙️ System Design</span>
+            <span class="interest-chip">🔐 Security</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- sections/skills.html -->
+<section id="skills" class="skills section">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header centered">
+      <div class="section-label">My Stack</div>
+      <h2 class="section-title skills-title">Skills &amp; Technologies</h2>
+      <p class="section-desc">A curated showcase of programming languages, frameworks, tools, and core fundamentals I work with.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         1. PROGRAMMING LANGUAGES
+    ═══════════════════════════════════ -->
+    <div class="skill-container">
+      <div class="skill-container-header">
+        <div class="skill-cat-icon lang-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3 class="skill-cat-title">Programming Languages</h3>
+        <div class="skill-cat-line"></div>
+        <span class="skill-cat-count">4</span>
+      </div>
+
+      <div class="tech-badge-grid cols-6">
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" loading="lazy" />
+          </div>
+          <span>C++</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" loading="lazy" />
+          </div>
+          <span>Python</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" loading="lazy" />
+          </div>
+          <span>Java</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL" loading="lazy" />
+          </div>
+          <span>SQL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         2. FRAMEWORKS & BACKEND
+    ═══════════════════════════════════ -->
+    <div class="skill-container">
+      <div class="skill-container-header">
+        <div class="skill-cat-icon framework-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="skill-cat-title">Frameworks &amp; Backend</h3>
+        <div class="skill-cat-line"></div>
+        <span class="skill-cat-count">3</span>
+      </div>
+
+      <div class="tech-badge-grid cols-6">
+        <div class="tech-badge">
+          <div class="tech-badge-icon dark-bg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" alt="Django" loading="lazy" class="invert-always" />
+          </div>
+          <span>Django</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon dark-bg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask" loading="lazy" class="invert-always" />
+          </div>
+          <span>Flask</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none">
+              <path d="M3 12h18M14 7l5 5-5 5" stroke="#667eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="5" cy="12" r="2" fill="#667eea"/>
+            </svg>
+          </div>
+          <span>REST APIs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         3. TOOLS & PLATFORMS
+    ═══════════════════════════════════ -->
+    <div class="skill-container">
+      <div class="skill-container-header">
+        <div class="skill-cat-icon tool-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3 class="skill-cat-title">Tools &amp; Platforms</h3>
+        <div class="skill-cat-line"></div>
+        <span class="skill-cat-count">8</span>
+      </div>
+
+      <div class="tech-badge-grid cols-8">
+        <div class="tech-badge">
+          <div class="tech-badge-icon aws-bg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS" loading="lazy" class="invert-always" />
+          </div>
+          <span>AWS</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" loading="lazy" />
+          </div>
+          <span>Docker</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" loading="lazy" />
+          </div>
+          <span>Kubernetes</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" loading="lazy" />
+          </div>
+          <span>Git</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" loading="lazy" />
+          </div>
+          <span>Linux</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VS Code" loading="lazy" />
+          </div>
+          <span>VS Code</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL WB" loading="lazy" />
+          </div>
+          <span>MySQL WB</span>
+        </div>
+        <div class="tech-badge">
+          <div class="tech-badge-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" alt="Postman" loading="lazy" />
+          </div>
+          <span>Postman</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         4. CS FUNDAMENTALS
+    ═══════════════════════════════════ -->
+    <div class="skill-container">
+      <div class="skill-container-header">
+        <div class="skill-cat-icon core-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3 class="skill-cat-title">Core CS Fundamentals</h3>
+        <div class="skill-cat-line"></div>
+        <span class="skill-cat-count">5</span>
+      </div>
+
+      <div class="cs-chips-grid">
+        <div class="cs-chip"><span class="cs-chip-icon">📊</span><span>Data Structures &amp; Algorithms</span></div>
+        <div class="cs-chip"><span class="cs-chip-icon">🗄️</span><span>Database Management Systems</span></div>
+        <div class="cs-chip"><span class="cs-chip-icon">🏗️</span><span>Object-Oriented Programming</span></div>
+        <div class="cs-chip"><span class="cs-chip-icon">💻</span><span>Operating Systems</span></div>
+        <div class="cs-chip"><span class="cs-chip-icon">🌐</span><span>Computer Networks</span></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════
+         5. SOFT SKILLS
+    ═══════════════════════════════════ -->
+    <div class="skill-container skill-container-soft">
+      <div class="skill-container-header">
+        <div class="skill-cat-icon soft-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="skill-cat-title">Soft Skills</h3>
+        <div class="skill-cat-line"></div>
+        <span class="skill-cat-count">5</span>
+      </div>
+
+      <div class="soft-chips-grid">
+        <span class="soft-chip">⚡ Adaptability</span>
+        <span class="soft-chip">🎨 Creativity</span>
+        <span class="soft-chip">🧭 Decision Making</span>
+        <span class="soft-chip">🚀 Quick Learner</span>
+        <span class="soft-chip">🤝 Teamwork</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- sections/projects.html -->
+<section id="projects" class="projects section">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-desc">Real-world applications built with production-grade technologies.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- ── Project 1 ── -->
+      <article class="project-card reveal stagger-1" data-project="1">
+        <!-- Cover Image -->
+        <div class="project-cover">
+          <img src="assets/projects/project-ecommerce.png" alt="E-Commerce App Preview" loading="lazy" decoding="async" />
+          <div class="project-cover-overlay">
+            <button class="project-view-btn project-detail-btn" data-project="1">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              View Details
+            </button>
+          </div>
+          <span class="project-cover-num">01</span>
+        </div>
+
+        <!-- Body -->
+        <div class="project-body">
+          <div class="project-header-row">
+            <h3 class="project-title">Full-Stack E-Commerce App</h3>
+            <div class="project-icon-links">
+              <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener" class="project-icon-link" aria-label="GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.001 12.001 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">Django-powered e-commerce platform with auth, cart, and order management system.</p>
+          <div class="project-tech-badges">
+            <span class="tech-badge-sm"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" width="11" height="11" alt="" /> Django</span>
+            <span class="tech-badge-sm"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="11" height="11" alt="" /> Python</span>
+            <span class="tech-badge-sm"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" width="11" height="11" alt="" /> SQLite</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Project 2 ── -->
+      <article class="project-card reveal stagger-2" data-project="2">
+        <div class="project-cover">
+          <img src="assets/projects/project-student.png" alt="Student Management System Preview" loading="lazy" decoding="async" />
+          <div class="project-cover-overlay">
+            <button class="project-view-btn project-detail-btn" data-project="2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              View Details
+            </button>
+          </div>
+          <span class="project-cover-num">02</span>
+        </div>
+        <div class="project-body">
+          <div class="project-header-row">
+            <h3 class="project-title">Student Management System</h3>
+            <div class="project-icon-links">
+              <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener" class="project-icon-link" aria-label="GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.001 12.001 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">C++ desktop application for managing student records with file-based CRUD operations.</p>
+          <div class="project-tech-badges">
+            <span class="tech-badge-sm"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" width="11" height="11" alt="" /> C++</span>
+            <span class="tech-badge-sm">⚙️ OOP</span>
+            <span class="tech-badge-sm">📁 File I/O</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Project 3 ── -->
+      <article class="project-card reveal stagger-3" data-project="3">
+        <div class="project-cover">
+          <img src="assets/projects/project-ai.png" alt="AI OS Monitor Preview" loading="lazy" decoding="async" />
+          <div class="project-cover-overlay">
+            <button class="project-view-btn project-detail-btn" data-project="3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              View Details
+            </button>
+          </div>
+          <span class="project-cover-num">03</span>
+        </div>
+        <div class="project-body">
+          <div class="project-header-row">
+            <h3 class="project-title">AI-Powered OS Monitor</h3>
+            <div class="project-icon-links">
+              <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener" class="project-icon-link" aria-label="GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.001 12.001 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">Flask dashboard using Isolation Forest ML for real-time OS anomaly detection and alerting.</p>
+          <div class="project-tech-badges">
+            <span class="tech-badge-sm"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" width="11" height="11" alt="" /> Flask</span>
+            <span class="tech-badge-sm"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="11" height="11" alt="" /> Python</span>
+            <span class="tech-badge-sm"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" width="11" height="11" alt="" /> ML</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Project 4 ── -->
+      <article class="project-card reveal stagger-4" data-project="4">
+        <div class="project-cover">
+          <img src="assets/projects/project-aws.png" alt="AWS Architecture Preview" loading="lazy" decoding="async" />
+          <div class="project-cover-overlay">
+            <button class="project-view-btn project-detail-btn" data-project="4">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              View Details
+            </button>
+          </div>
+          <span class="project-cover-num">04</span>
+        </div>
+        <div class="project-body">
+          <div class="project-header-row">
+            <h3 class="project-title">Scalable AWS E-Commerce Arch</h3>
+            <div class="project-icon-links">
+              <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener" class="project-icon-link" aria-label="GitHub">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.001 12.001 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">Production cloud infra with EC2 auto-scaling, CloudFront CDN, DynamoDB &amp; S3.</p>
+          <div class="project-tech-badges">
+            <span class="tech-badge-sm">☁️ EC2</span>
+            <span class="tech-badge-sm">🌐 CloudFront</span>
+            <span class="tech-badge-sm">🗄️ DynamoDB</span>
+            <span class="tech-badge-sm">🪣 S3</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /projects-grid -->
+  </div>
+</section>
+
+<!-- sections/certifications.html -->
+<section id="certifications" class="certifications section">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-label">Achievements</div>
+      <h2 class="section-title">Certifications &amp; Training</h2>
+      <p class="section-desc">Verified credentials from AWS, IIT, IBM, Google, and more.</p>
+    </div>
+
+    <div class="certifications-grid">
+
+      <!-- AWS Cloud Architecting -->
+      <a href="https://www.credly.com/go/1ihYekpx" target="_blank" rel="noopener" class="cert-card reveal stagger-1">
+        <div class="cert-preview-wrap">
+          <div class="cert-preview" style="background: linear-gradient(135deg, #ff9900 0%, #232f3e 100%);">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS" class="cert-org-logo invert-always" />
+          </div>
+          <div class="cert-overlay-hover">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            <span>View Certificate</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <h3>Cloud Architecting</h3>
+          <p>AWS Academy</p>
+          <span class="cert-year">Feb 2026</span>
+        </div>
+      </a>
+
+      <!-- NPTEL IoT -->
+      <a href="https://drive.google.com/file/d/1wSdrpEmpqXrcy1vMJA0QAjUR3ufvAi0F/view?usp=drive_link" target="_blank" rel="noopener" class="cert-card reveal stagger-2">
+        <div class="cert-preview-wrap">
+          <div class="cert-preview" style="background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);">
+            <span class="cert-preview-emoji">📡</span>
+          </div>
+          <div class="cert-overlay-hover">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>View Certificate</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <h3>Introduction to IoT</h3>
+          <p>IIT Kharagpur · NPTEL Elite</p>
+          <span class="cert-year">Oct 2025</span>
+        </div>
+      </a>
+
+      <!-- ChatGPT Prompt Engineering -->
+      <a href="https://drive.google.com/file/d/13wBH3whZ5aeWaQYqNh36V8wGamc-xx42/view?usp=drive_link" target="_blank" rel="noopener" class="cert-card reveal stagger-3">
+        <div class="cert-preview-wrap">
+          <div class="cert-preview" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+            <span class="cert-preview-emoji">🧠</span>
+          </div>
+          <div class="cert-overlay-hover">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>View Certificate</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <h3>ChatGPT Prompt Engineering</h3>
+          <p>Generative AI</p>
+          <span class="cert-year">Aug 2025</span>
+        </div>
+      </a>
+
+      <!-- Build Generative AI Apps -->
+      <a href="https://drive.google.com/file/d/1l5i94II0fqoUknnBP1kp9kkKECUrR2i6/view?usp=drive_link" target="_blank" rel="noopener" class="cert-card reveal stagger-4">
+        <div class="cert-preview-wrap">
+          <div class="cert-preview" style="background: linear-gradient(135deg, #7b2ff7 0%, #f107a3 100%);">
+            <span class="cert-preview-emoji">🤖</span>
+          </div>
+          <div class="cert-overlay-hover">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>View Certificate</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <h3>Build Generative AI Apps</h3>
+          <p>Udemy</p>
+          <span class="cert-year">Aug 2025</span>
+        </div>
+      </a>
+
+      <!-- Master Generative AI -->
+      <a href="https://drive.google.com/file/d/1CtLsLH6vFi_qCL69CN6VWRdlsB_HH37H/view?usp=drive_link" target="_blank" rel="noopener" class="cert-card reveal stagger-5">
+        <div class="cert-preview-wrap">
+          <div class="cert-preview" style="background: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);">
+            <span class="cert-preview-emoji">🚀</span>
+          </div>
+          <div class="cert-overlay-hover">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>View Certificate</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <h3>Master Gen AI &amp; LLM Tools</h3>
+          <p>Udemy</p>
+          <span class="cert-year">Aug 2025</span>
+        </div>
+      </a>
+
+      <!-- IBM Hardware & OS -->
+      <a href="https://www.coursera.org/account/accomplishments/verify/QZJW31HQL3U0" target="_blank" rel="noopener" class="cert-card reveal stagger-6">
+        <div class="cert-preview-wrap">
+          <div class="cert-preview" style="background: linear-gradient(135deg, #1a73e8 0%, #174ea6 100%);">
+            <span class="cert-preview-emoji">💻</span>
+          </div>
+          <div class="cert-overlay-hover">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>View Certificate</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <h3>Hardware &amp; Operating Systems</h3>
+          <p>IBM · Coursera</p>
+          <span class="cert-year">Sep 2024</span>
+        </div>
+      </a>
+
+      <!-- Network Communication -->
+      <a href="https://www.coursera.org/account/accomplishments/verify/9H8HNC2XHUXY" target="_blank" rel="noopener" class="cert-card reveal stagger-7">
+        <div class="cert-preview-wrap">
+          <div class="cert-preview" style="background: linear-gradient(135deg, #0052cc 0%, #2684ff 100%);">
+            <span class="cert-preview-emoji">🌐</span>
+          </div>
+          <div class="cert-overlay-hover">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>View Certificate</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <h3>Network Communication</h3>
+          <p>Coursera</p>
+          <span class="cert-year">Sep 2024</span>
+        </div>
+      </a>
+
+      <!-- Google Networking -->
+      <a href="https://coursera.org/verify/LZRVG0WKX8Z8" target="_blank" rel="noopener" class="cert-card reveal stagger-8">
+        <div class="cert-preview-wrap">
+          <div class="cert-preview" style="background: linear-gradient(135deg, #4285f4 0%, #34a853 50%, #fbbc04 75%, #ea4335 100%);">
+            <span class="cert-preview-emoji">🔌</span>
+          </div>
+          <div class="cert-overlay-hover">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>View Certificate</span>
+          </div>
+        </div>
+        <div class="cert-info">
+          <h3>Bits &amp; Bytes of Networking</h3>
+          <p>Google · Coursera</p>
+          <span class="cert-year">Sep 2024</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- sections/resume.html -->
+<section id="resume" class="resume section">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-label">CV</div>
+      <h2 class="section-title">My Resume</h2>
+    </div>
+
+    <div class="resume-container reveal">
+      <!-- Contact Tags -->
+      <div class="resume-header">
+        <div class="resume-contact-tags">
+          <a href="mailto:shrenikjainwos@gmail.com" class="contact-info-tag">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg" width="16" height="16" alt="Email"> shrenikjainwos@gmail.com
+          </a>
+          <a href="tel:+919914220785" class="contact-info-tag">
+            📱 +91 9914220785
+          </a>
+          <a href="https://linkedin.com/in/shrenikkjainn" target="_blank" rel="noopener" class="contact-info-tag">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" width="16" height="16" alt="LinkedIn"> LinkedIn
+          </a>
+          <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener" class="contact-info-tag">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" class="logo-dark" width="16" height="16" alt="GitHub"> GitHub
           </a>
         </div>
       </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact animate-on-scroll">
-      <div class="container">
-        <h2 class="section-title">Let's Connect</h2>
+      <!-- Tabs -->
+      <div class="resume-tabs" role="tablist">
+        <button class="tab-btn active" data-tab="edu"   role="tab" aria-selected="true">Education</button>
+        <button class="tab-btn"        data-tab="sk"    role="tab">Skills</button>
+        <button class="tab-btn"        data-tab="proj"  role="tab">Projects</button>
+        <button class="tab-btn"        data-tab="train" role="tab">Training</button>
+        <button class="tab-btn"        data-tab="certs" role="tab">Certificates</button>
+      </div>
 
-        <p class="contact-subtitle">
-          I'm always interested in hearing about new projects and opportunities.
-        </p>
+      <div class="resume-content">
+        <!-- ── EDUCATION ── -->
+        <div class="tab-content active" id="edu" role="tabpanel">
 
-        <div class="contact-content">
-          <!-- EMAIL -->
-          <div class="contact-card">
-            <h3>📧 Email</h3>
-            <a href="mailto:shrenikjainwos@gmail.com">
-              shrenikjainwos@gmail.com
-            </a>
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <div>
+                <h3 class="resume-card-title">Lovely Professional University</h3>
+                <p class="resume-card-subtitle">Punjab, India</p>
+              </div>
+              <span class="resume-card-date">Since 2023</span>
+            </div>
+            <div class="resume-card-body">
+              <p>Bachelor of Technology – Computer Science Engineering</p>
+              <p><strong>CGPA: 7.43</strong></p>
+            </div>
           </div>
 
-          <!-- LINKEDIN -->
-          <div class="contact-card">
-            <h3>💼 LinkedIn</h3>
-            <a href="https://linkedin.com/in/shrenikkjainn" target="_blank">
-              linkedin.com/in/shrenikkjainn
-            </a>
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <div>
+                <h3 class="resume-card-title">SD Senior Secondary School</h3>
+                <p class="resume-card-subtitle">Hoshiarpur, Punjab</p>
+              </div>
+              <span class="resume-card-date">Apr 2022 – May 2023</span>
+            </div>
+            <div class="resume-card-body">
+              <p>Intermediate</p>
+              <p><strong>Percentage: 82%</strong></p>
+            </div>
           </div>
 
-          <!-- GITHUB -->
-          <div class="contact-card">
-            <h3>🐙 GitHub</h3>
-            <a href="https://github.com/shrenikkjainn" target="_blank">
-              github.com/shrenikkjainn
-            </a>
-          </div>
-
-          <!-- FORM -->
-          <div class="contact-card contact-form-card">
-            <h3>Send a Message</h3>
-
-            <form class="contact-form">
-              <input type="text" placeholder="Your Name" required />
-
-              <input type="email" placeholder="Your Email" required />
-
-              <textarea rows="5" placeholder="Your Message" required></textarea>
-
-              <button type="submit" class="btn btn-primary">
-                Send Message
-              </button>
-            </form>
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <div>
+                <h3 class="resume-card-title">Woodland Overseas School</h3>
+                <p class="resume-card-subtitle">Hoshiarpur, Punjab</p>
+              </div>
+              <span class="resume-card-date">Apr 2020 – Mar 2021</span>
+            </div>
+            <div class="resume-card-body">
+              <p>Matriculation</p>
+              <p><strong>Percentage: 89.2%</strong></p>
+            </div>
           </div>
         </div>
+
+        <!-- ── SKILLS ── -->
+        <div class="tab-content" id="sk" role="tabpanel">
+          <div class="resume-card">
+            <h3 class="resume-card-title" style="margin-bottom:1.2rem;">Technical Skills</h3>
+            <div class="resume-skills-grid">
+              <div class="resume-skill-group">
+                <h4>Languages</h4>
+                <div class="skill-tags">
+                  <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+                    <span>C++</span>
+                  </div>
+                  <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" />
+                    <span>Python</span>
+                  </div>
+                  <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" />
+                    <span>Java</span>
+                  </div>
+                  <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" />
+                    <span>SQL</span>
+                  </div>
+                </div>
+              </div>
+              <div class="resume-skill-group">
+                <h4>Frameworks</h4>
+                <div class="skill-tags">
+                  <div class="skill-item django-icon">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" alt="Django" />
+                    <span>Django</span>
+                  </div>
+                  <div class="skill-item flask-icon">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask" />
+                    <span>Flask</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-emoji">🔗</span>
+                    <span>REST APIs</span>
+                  </div>
+                </div>
+              </div>
+              <div class="resume-skill-group">
+                <h4>Tools / Platforms</h4>
+                <div class="skill-tags">
+                  <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" />
+                    <span>AWS</span>
+                  </div>
+                  <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker" />
+                    <span>Docker</span>
+                  </div>
+                  <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" />
+                    <span>Kubernetes</span>
+                  </div>
+                  <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" />
+                    <span>Git</span>
+                  </div>
+                  <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" />
+                    <span>Linux</span>
+                  </div>
+                  <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" alt="Postman" />
+                    <span>Postman</span>
+                  </div>
+                </div>
+              </div>
+              <div class="resume-skill-group">
+                <h4>Core Fundamentals</h4>
+                <div class="skill-tags">
+                  <div class="skill-item">
+                    <span class="skill-emoji">🗂️</span>
+                    <span>Data Structures</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-emoji">🗄️</span>
+                    <span>DBMS</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-emoji">⚙️</span>
+                    <span>OOP</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-emoji">🌐</span>
+                    <span>Networking</span>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PROJECTS ── -->
+        <div class="tab-content" id="proj" role="tabpanel">
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <div>
+                <h3 class="resume-card-title">Full-Stack E-Commerce Application</h3>
+                <p class="resume-card-subtitle">Django, SQLite, HTML/CSS</p>
+              </div>
+              <span class="resume-card-date">Feb 2026</span>
+            </div>
+            <div class="resume-card-body">
+              <ul>
+                <li>Developed a database-driven e-commerce platform using Django.</li>
+                <li>Implemented secure authentication, session management, and order workflow.</li>
+                <li>Designed relational models for products, carts, and order processing.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <div>
+                <h3 class="resume-card-title">Student Management System</h3>
+                <p class="resume-card-subtitle">C++, File Handling</p>
+              </div>
+              <span class="resume-card-date">Jun 2025</span>
+            </div>
+            <div class="resume-card-body">
+              <ul>
+                <li>Built a menu-driven application for managing student academic records.</li>
+                <li>Implemented CRUD operations using file-based data storage.</li>
+                <li>Enabled efficient data retrieval and secure record modification.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <div>
+                <h3 class="resume-card-title">AI-Powered OS Monitoring System</h3>
+                <p class="resume-card-subtitle">Python, Flask, Machine Learning</p>
+              </div>
+              <span class="resume-card-date">Mar 2025</span>
+            </div>
+            <div class="resume-card-body">
+              <ul>
+                <li>Developed a real-time monitoring dashboard using Flask.</li>
+                <li>Implemented anomaly detection using the Isolation Forest ML algorithm.</li>
+                <li>Visualized CPU, memory, and disk usage with automated alerts.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <div>
+                <h3 class="resume-card-title">Scalable E-Commerce Architecture on AWS</h3>
+                <p class="resume-card-subtitle">AWS EC2, S3, CloudFront, DynamoDB</p>
+              </div>
+              <span class="resume-card-date">Apr 2025</span>
+            </div>
+            <div class="resume-card-body">
+              <ul>
+                <li>Designed a scalable cloud architecture for high-traffic e-commerce workloads.</li>
+                <li>Integrated EC2, S3, CloudFront, and DynamoDB for distributed infrastructure.</li>
+                <li>Configured CDN caching and optimized system availability.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TRAINING ── -->
+        <div class="tab-content" id="train" role="tabpanel">
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <div>
+                <h3 class="resume-card-title">C++ Programming – OOPs &amp; DSA</h3>
+                <p class="resume-card-subtitle">CSE Pathshala</p>
+              </div>
+              <span class="resume-card-date">Jun 2025 – Jul 2025</span>
+            </div>
+            <div class="resume-card-body">
+              <ul>
+                <li>Implemented Trees, Hash Maps, and Searching Algorithms.</li>
+                <li>Applied OOP principles to build modular C++ applications.</li>
+                <li>Strengthened problem-solving skills with DSA practice.</li>
+                <li>Developed a strong foundation in C++ syntax, STL, and best practices.</li>
+                <li>Completed coding challenges to optimize algorithmic efficiency.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CERTIFICATES ── -->
+        <div class="tab-content" id="certs" role="tabpanel">
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <h3 class="resume-card-title">AWS Academy Graduate – Cloud Architecting</h3>
+              <span class="resume-card-date">Feb 2026</span>
+            </div>
+            <p class="resume-card-subtitle">AWS Academy</p>
+          </div>
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <h3 class="resume-card-title">NPTEL Elite – Introduction to Internet of Things</h3>
+              <span class="resume-card-date">Oct 2025</span>
+            </div>
+            <p class="resume-card-subtitle">IIT Kharagpur</p>
+          </div>
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <h3 class="resume-card-title">Master Generative AI &amp; LLM Tools</h3>
+              <span class="resume-card-date">Aug 2025</span>
+            </div>
+            <p class="resume-card-subtitle">Udemy</p>
+          </div>
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <h3 class="resume-card-title">Introduction to Hardware &amp; Operating Systems</h3>
+              <span class="resume-card-date">Sep 2024</span>
+            </div>
+            <p class="resume-card-subtitle">IBM – Coursera</p>
+          </div>
+
+          <div class="resume-card">
+            <div class="resume-card-header">
+              <h3 class="resume-card-title">Fundamentals of Network Communication</h3>
+              <span class="resume-card-date">Sep 2024</span>
+            </div>
+            <p class="resume-card-subtitle">Coursera</p>
+          </div>
+
+        </div>
+      </div><!-- /resume-content -->
+
+      <!-- Download -->
+      <div class="resume-download">
+        <a href="assets/CV final.pdf" class="btn btn-primary" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Full Resume
+        </a>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <polyline points="18 15 12 9 6 15"></polyline>
-      </svg>
-    </button>
+<!-- sections/contact.html -->
+<section id="contact" class="contact section">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-desc">I'm always interested in hearing about new projects and opportunities.</p>
+    </div>
 
-    <div id="projects-container"></div>
+    <div class="contact-grid">
+      <!-- Info Cards -->
+      <div class="contact-info">
+        <a href="mailto:shrenikjainwos@gmail.com" class="contact-card reveal stagger-1">
+          <div class="contact-card-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg" width="22" height="22" alt="Email">
+          </div>
+          <div class="contact-card-info">
+            <h4>Email</h4>
+            <span>shrenikjainwos@gmail.com</span>
+          </div>
+        </a>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-  </body>
+        <a href="https://linkedin.com/in/shrenikkjainn" target="_blank" rel="noopener" class="contact-card reveal stagger-2">
+          <div class="contact-card-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" width="22" height="22" alt="LinkedIn">
+          </div>
+          <div class="contact-card-info">
+            <h4>LinkedIn</h4>
+            <span>linkedin.com/in/shrenikkjainn</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener" class="contact-card reveal stagger-3">
+          <div class="contact-card-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" class="logo-dark" width="22" height="22" alt="GitHub">
+          </div>
+          <div class="contact-card-info">
+            <h4>GitHub</h4>
+            <span>github.com/shrenikkjainn</span>
+          </div>
+        </a>
+
+        <a href="tel:+919914220785" class="contact-card reveal stagger-4">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+          </div>
+          <div class="contact-card-info">
+            <h4>Phone</h4>
+            <span>+91 9914220785</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form-card reveal stagger-2">
+        <h3>Send a Message</h3>
+        <p>Fill out the form below and I'll get back to you as soon as possible.</p>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactName">Name</label>
+              <input type="text" id="contactName" name="name" placeholder="Your name" required autocomplete="name" />
+              <div class="form-focus-bar"></div>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required autocomplete="email" />
+              <div class="form-focus-bar"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" placeholder="What's this about?" />
+            <div class="form-focus-bar"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
+            <div class="form-focus-bar"></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- sections/footer.html -->
+
+<!-- Project Detail Modal (lives at foot of page so it's always available) -->
+<div id="projectModal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="project-modal-card">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- Back to Top -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Shrenik Jain</div>
+
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certs</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="footer-socials">
+      <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener"
+         class="footer-social-icon" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.001 12.001 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+      <a href="https://linkedin.com/in/shrenikkjainn" target="_blank" rel="noopener"
+         class="footer-social-icon" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.438-.103.25-.129.599-.129.948v5.419h-3.554s.05-8.736 0-9.646h3.554v1.364c.43-.664 1.196-1.608 2.906-1.608 2.121 0 3.713 1.387 3.713 4.365v5.525zM5.337 8.855c-1.144 0-1.915-.758-1.915-1.704 0-.951.77-1.704 1.968-1.704 1.197 0 1.915.75 1.948 1.704 0 .946-.751 1.704-1.968 1.704zm1.529 11.597H3.808V9.856h3.058v10.596z"/>
+        </svg>
+      </a>
+      <a href="mailto:shrenikjainwos@gmail.com" class="footer-social-icon" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <p class="footer-copy">
+      &copy; 2026 <span>Shrenik Jain</span>. Crafted with ☁️ &amp; ☕
+    </p>
+  </div>
+</footer>
+
+
+  </div>
+
+    <!-- Consolidated JS -->
+  <script src="script.js"></script>
+
+  <!-- Spinner animation -->
+  <style>
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+</body>
+
 </html>
