@@ -50,7 +50,7 @@ class ParticleSystem {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) return;
-    this.ctx    = this.canvas.getContext('2d');
+    this.ctx = this.canvas.getContext('2d');
     this.count = window.innerWidth < 768 ? 15 : 40;
     this.animId = null;
 
@@ -61,7 +61,7 @@ class ParticleSystem {
   }
 
   setup() {
-    this.canvas.width  = this.canvas.offsetWidth  || window.innerWidth;
+    this.canvas.width = this.canvas.offsetWidth || window.innerWidth;
     this.canvas.height = this.canvas.offsetHeight || window.innerHeight;
     this.particles = Array.from({ length: this.count }, () => new Particle(this.canvas));
   }
@@ -84,19 +84,19 @@ class Particle {
   }
 
   reset() {
-    this.x       = Math.random() * this.canvas.width;
-    this.y       = Math.random() * this.canvas.height;
-    this.size    = Math.random() * 1.6 + 0.4;
-    this.speedX  = (Math.random() - 0.5) * 0.28;
-    this.speedY  = (Math.random() - 0.5) * 0.28;
+    this.x = Math.random() * this.canvas.width;
+    this.y = Math.random() * this.canvas.height;
+    this.size = Math.random() * 1.6 + 0.4;
+    this.speedX = (Math.random() - 0.5) * 0.28;
+    this.speedY = (Math.random() - 0.5) * 0.28;
     this.opacity = Math.random() * 0.5 + 0.1;
   }
 
   update() {
     this.x += this.speedX;
     this.y += this.speedY;
-    if (this.x < 0 || this.x > this.canvas.width)  this.speedX *= -1;
-    if (this.y < 0 || this.y > this.canvas.height)  this.speedY *= -1;
+    if (this.x < 0 || this.x > this.canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > this.canvas.height) this.speedY *= -1;
   }
 
   draw(ctx, isDark) {
@@ -312,9 +312,9 @@ function initAll() {
   });
 
   /* ── Project Modal ── */
-  const modalEl   = document.getElementById('projectModal');
+  const modalEl = document.getElementById('projectModal');
   const modalBody = document.getElementById('modalBody');
-  const closeBtn  = document.querySelector('.modal-close');
+  const closeBtn = document.querySelector('.modal-close');
 
   function openModal(id) {
     const data = PROJECT_DATA[id];
@@ -340,30 +340,55 @@ function initAll() {
     card.addEventListener('click', () => openModal(card.dataset.project));
   });
 
-  /* ── Contact Form ── */
-  const form = document.querySelector('.contact-form');
+  /* ── Contact Form (Google Sheets) ── */
+  const form = document.getElementById("contactForm");
+
   if (form) {
-    form.addEventListener('submit', async e => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const original  = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<span>Sending…</span>';
+
+      const submitBtn = form.querySelector("button[type='submit']");
+      const original = submitBtn.innerHTML;
+
+      submitBtn.innerHTML = "Sending...";
       submitBtn.disabled = true;
 
-      await new Promise(r => setTimeout(r, 1400));
+      const formData = {
+        name: document.getElementById("contactName").value,
+        email: document.getElementById("contactEmail").value,
+        subject: document.getElementById("contactSubject").value,
+        message: document.getElementById("contactMessage").value
+      };
 
-      submitBtn.innerHTML = `
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg> Sent!`;
-      submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      try {
+
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbzg4qjNu8u6DTVt8RrAm6m52byf_KQQZ_zGmaCAm358KZteSvHMai8k24z-oK81hJhs/exec",
+          {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+          }
+        );
+
+        submitBtn.innerHTML = "Sent ✓";
+        form.reset();
+
+      } catch (error) {
+
+        console.error("Form error:", error);
+        submitBtn.innerHTML = "Failed";
+
+      }
 
       setTimeout(() => {
         submitBtn.innerHTML = original;
-        submitBtn.style.background = '';
         submitBtn.disabled = false;
-        form.reset();
       }, 3000);
+
     });
   }
 }
@@ -380,7 +405,7 @@ document.addEventListener('sectionsLoaded', initAll);
 
 (function () {
   const STORAGE_KEY = 'portfolio-theme';
-  const DARK_CLASS  = 'dark-theme';
+  const DARK_CLASS = 'dark-theme';
 
   const SUN_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none"
       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -408,14 +433,14 @@ document.addEventListener('sectionsLoaded', initAll);
   }
 
   // Determine initial theme and apply right away
-  const stored      = localStorage.getItem(STORAGE_KEY);
+  const stored = localStorage.getItem(STORAGE_KEY);
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initDark    = stored ? stored === 'dark' : prefersDark;
+  const initDark = stored ? stored === 'dark' : prefersDark;
   applyTheme(initDark);
 
   /* ── Wire button AFTER sections are loaded ── */
   function bindButton() {
-    const btn  = document.getElementById('themeToggle');
+    const btn = document.getElementById('themeToggle');
     const icon = document.getElementById('themeIcon');
     if (!btn) return;
 
