@@ -111,28 +111,11 @@ class Particle {
   }
 }
 
-/* ─── 3D Card Tilt (delegated to avoid issues with dynamic content) ─── */
-function initTilt() {
-  document.querySelectorAll('.project-card, .skill-logo-card, .cert-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r  = card.getBoundingClientRect();
-      const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
-      const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
-      card.style.transform = `perspective(800px) rotateY(${dx * 5}deg) rotateX(${-dy * 5}deg) translateZ(4px)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
-}
-
 /* ─── Init after sections are injected ─── */
 function initAnimations() {
-  // Particle system targets hero canvas — now scoped inside the hero section
   if (document.getElementById('background-canvas')) {
     new ParticleSystem('background-canvas');
   }
-  initTilt();
 }
 
 document.addEventListener('sectionsLoaded', initAnimations);
@@ -226,9 +209,13 @@ function buildModalHTML(data) {
 
 /* ─── All UI initialisation (runs once sections are in DOM) ─── */
 function initAll() {
-  /* Remove loading state */
+  /* Remove loading state smoothly */
   const loadingState = document.getElementById('loadingState');
-  if (loadingState) loadingState.remove();
+  if (loadingState) {
+    loadingState.style.transition = 'opacity 0.6s ease';
+    loadingState.style.opacity = '0';
+    setTimeout(() => loadingState.remove(), 600);
+  }
 
   /* ── Navbar scroll shrink ── */
   const navbar = document.querySelector('.navbar');

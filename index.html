@@ -70,7 +70,7 @@
   <div class="nav-container">
     <!-- Logo -->
     <div class="nav-logo">
-      <a href="#home" aria-label="Shrenik Jain Home">SJ</a>
+      <a href="#home" aria-label="Shrenik Jain Home">Shrenik Jain</a>
     </div>
 
     <!-- Desktop Menu -->
@@ -299,37 +299,53 @@
 
       <!-- Sidebar -->
       <div class="about-sidebar">
-        <div class="about-stat-card reveal stagger-1">
-          <div class="about-stat-icon">🎓</div>
-          <div class="about-stat-info">
-            <h4>B.Tech CSE</h4>
-            <p>Lovely Professional University · CGPA 7.43</p>
-          </div>
+        <!-- Quick Facts Card -->
+        <div class="about-quick-facts reveal stagger-1">
+          <h3 class="quick-facts-title">Quick Facts</h3>
+          <ul class="quick-facts-list">
+            <li class="qf-item">
+              <div class="qf-icon">📍</div>
+              <div class="qf-info">
+                <h4>Location</h4>
+                <p>Hoshiarpur, Punjab, India</p>
+              </div>
+            </li>
+            <li class="qf-item">
+              <div class="qf-icon">🎓</div>
+              <div class="qf-info">
+                <h4>Education</h4>
+                <p>Pursuing Bachelor of Technology in Computer Science and Engineering</p>
+              </div>
+            </li>
+          </ul>
         </div>
+        <div class="about-quick-facts reveal stagger-2">
+  <h3 class="quick-facts-title">Beyond Coding</h3>
 
-        <div class="about-stat-card reveal stagger-2">
-          <div class="about-stat-icon">☁️</div>
-          <div class="about-stat-info">
-            <h4>Cloud Focus</h4>
-            <p>AWS Certified Graduate · Cloud Architecting</p>
-          </div>
-        </div>
+  <ul class="quick-facts-list">
 
-        <div class="about-stat-card reveal stagger-3">
-          <div class="about-stat-icon">🤖</div>
-          <div class="about-stat-info">
-            <h4>AI / ML</h4>
-            <p>Isolation Forest · Generative AI · LLMs</p>
-          </div>
-        </div>
+    <li class="qf-item">
+      <div class="qf-icon">🏎️</div>
+      <div class="qf-info">
+        <h4>Automotive Enthusiast</h4>
+      </div>
+    </li>
 
-        <div class="about-stat-card reveal stagger-4">
-          <div class="about-stat-icon">📍</div>
-          <div class="about-stat-info">
-            <h4>Location</h4>
-            <p>Punjab, India</p>
-          </div>
-        </div>
+    <li class="qf-item">
+      <div class="qf-icon">🌐</div>
+      <div class="qf-info">
+        <h4>Web Exploration</h4>
+      </div>
+    </li>
+
+    <li class="qf-item">
+      <div class="qf-icon">✈️</div>
+      <div class="qf-info">
+        <h4>Travelling</h4>
+      </div>
+    </li>
+  </ul>
+</div>
 
         <!-- Interests -->
         <div class="about-interests reveal stagger-5">
@@ -686,6 +702,78 @@
       </article>
 
     </div><!-- /projects-grid -->
+  </div>
+</section>
+
+<!-- sections/training.html -->
+<section id="training" class="training section">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">
+        Summer Training <span class="training-icon" aria-hidden="true">🎓</span>
+      </h2>
+      <p class="section-desc">Hands-on industry training and practical development experience.</p>
+    </div>
+
+    <!-- Experience Card -->
+    <div class="glass training-card reveal stagger-1">
+      
+      <!-- Decorative gradient blob inside card -->
+      <div class="training-card-decoration"></div>
+
+      <div class="training-card-content">
+        
+        <!-- Header: Title + Tag -->
+        <div class="training-header">
+          <div>
+            <h3 class="training-title">C++ Programming – OOPs &amp; Data Structures</h3>
+            <div class="training-org">CSE Pathshala</div>
+          </div>
+          <span class="tag training-duration">June 2025 – July 2025</span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="training-buttons">
+          <a href="#" class="btn btn-primary btn-sm">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            View Certificate
+          </a>
+          <div class="btn btn-secondary btn-sm" style="pointer-events: none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            1 Month Duration
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="this.parentElement.nextElementSibling.scrollIntoView({behavior: 'smooth', block: 'nearest'})">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            View Experience
+          </button>
+        </div>
+
+        <!-- Details -->
+        <ul class="training-list">
+          <li class="training-item">
+            <span class="training-bullet">•</span> 
+            <span class="training-desc">Implemented core Data Structures including Trees, Hash Maps, and Searching Algorithms.</span>
+          </li>
+          <li class="training-item">
+            <span class="training-bullet">•</span> 
+            <span class="training-desc">Developed modular C++ programs using Object-Oriented Programming principles.</span>
+          </li>
+          <li class="training-item">
+            <span class="training-bullet">•</span> 
+            <span class="training-desc">Strengthened algorithmic thinking through structured coding challenges.</span>
+          </li>
+          <li class="training-item">
+            <span class="training-bullet">•</span> 
+            <span class="training-desc">Gained hands-on experience with STL containers and efficient memory usage.</span>
+          </li>
+          <li class="training-item">
+            <span class="training-bullet">•</span> 
+            <span class="training-desc">Practiced real-world problem solving and performance optimization techniques.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
