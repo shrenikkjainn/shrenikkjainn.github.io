@@ -146,6 +146,8 @@ const PROJECT_DATA = {
       'Relational database models (SQLite)',
     ],
     technologies: ['Django', 'Python', 'HTML', 'CSS', 'SQLite'],
+    github: 'https://github.com/shrenikkjainn/Django-eCommerce-Web-Application',
+    live: "https://django-ecommerce-web-application.onrender.com"
   },
   2: {
     title: 'Student Management System',
@@ -157,6 +159,7 @@ const PROJECT_DATA = {
       'OOP design with modular architecture',
     ],
     technologies: ['C++', 'OOP', 'File Handling', 'Data Structures'],
+    github: 'https://github.com/shrenikkjainn/Student-Management-System---cpp-program'
   },
   3: {
     title: 'AI-Powered OS Monitoring System',
@@ -168,6 +171,7 @@ const PROJECT_DATA = {
       'Automated threshold-based alerting',
     ],
     technologies: ['Python', 'Flask', 'Machine Learning', 'scikit-learn', 'Real-time'],
+    github: 'https://github.com/shrenikkjainn/OS-Moniter'
   },
   4: {
     title: 'Scalable E-Commerce Architecture on AWS',
@@ -180,6 +184,7 @@ const PROJECT_DATA = {
       'Load balancer configuration and health checks',
     ],
     technologies: ['AWS EC2', 'S3', 'CloudFront', 'DynamoDB', 'IAM', 'Architecture'],
+    github: 'https://github.com/shrenikkjainn/Scalable-E-Commerce-Architecture-AWS-EC2-CloudFront-S3-DynamoDB'
   },
 };
 
@@ -193,16 +198,21 @@ function buildModalHTML(data) {
       ${data.technologies.map(t => `<span>${t}</span>`).join('')}
     </div>
     <div class="project-links">
-      <a href="#" class="btn btn-primary" onclick="return false;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-        </svg>Live Demo
-      </a>
-      <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener" class="btn btn-outline">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" class="logo-dark" width="16" height="16" alt="GitHub">
-        GitHub
-      </a>
+      ${data.live ? `
+<a href="${data.live}" target="_blank" class="btn btn-primary">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/>
+    <line x1="10" y1="14" x2="21" y2="3"/>
+  </svg>
+  Live Demo
+</a>
+` : ''}
+      <a href="${data.github}" target="_blank" rel="noopener" class="btn btn-outline">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+       class="logo-dark" width="16" height="16" alt="GitHub">
+  GitHub
+</a>
     </div>
   `;
 }
@@ -430,6 +440,12 @@ document.addEventListener('sectionsLoaded', initAll);
     // Update icon if button already in DOM (deferred call may call this again)
     const icon = document.getElementById('themeIcon');
     if (icon) icon.innerHTML = isDark ? MOON_SVG : SUN_SVG;
+
+    // Update profile image if it exists in DOM
+    const profileImg = document.getElementById('profileImage');
+    if (profileImg) {
+      profileImg.src = isDark ? 'assets/profilephoto/profile-dark.png' : 'assets/profilephoto/profile-light.jpg';
+    }
   }
 
   // Determine initial theme and apply right away
