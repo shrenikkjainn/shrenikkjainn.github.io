@@ -22,6 +22,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
+  <!-- Preload hero image (critical) -->
+  <link rel="preload" as="image" href="assets/images/profile-light.webp" fetchpriority="high" type="image/webp">
   <link rel="preload" href="style.css" as="style">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -81,7 +83,7 @@
           <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
           <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
           <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-          <li class="nav-item"><a href="#certifications" class="nav-link">Certs</a></li>
+          <li class="nav-item"><a href="#certifications" class="nav-link">Certifications</a></li>
           <li class="nav-item"><a href="#resume" class="nav-link">Resume</a></li>
           <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -130,35 +132,37 @@
           <div class="hero-image-glow"></div>
 
           <div class="hero-image-ring">
-            <img id="profileImage" src="assets/profilephoto/profile-light.jpg" alt="Shrenik Jain" loading="eager"
-              decoding="async" fetchpriority="high">
+            <picture>
+              <source srcset="assets/images/profile-light.webp" type="image/webp">
+              <img id="profileImage" src="assets/profilephoto/profile-light.jpg" alt="Shrenik Jain" width="280"
+                height="280" loading="eager" decoding="async" fetchpriority="high">
+            </picture>
           </div>
 
           <!-- Floating Tech Badges -->
           <div class="hero-tech-badges">
 
             <div class="tech-badge">
-              <img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
-                width="28" height="28" alt="AWS">
+              <img src="assets/icons/amazonwebservices-original-wordmark.svg" width="28" height="28" alt="AWS"
+                loading="eager" decoding="async">
               AWS
             </div>
 
             <div class="tech-badge">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
-                class="logo-dark" width="28" height="28" alt="Django">
+              <img src="assets/icons/django-plain.svg" class="logo-dark" width="28" height="28" alt="Django"
+                loading="eager" decoding="async">
               Django
             </div>
 
             <div class="tech-badge">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" width="28"
-                height="28" alt="Docker">
+              <img src="assets/icons/docker-original.svg" width="28" height="28" alt="Docker" loading="eager"
+                decoding="async">
               Docker
             </div>
 
             <div class="tech-badge">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="28"
-                height="28" alt="Python">
+              <img src="assets/icons/python-original.svg" width="28" height="28" alt="Python" loading="eager"
+                decoding="async">
               Python
             </div>
 
@@ -399,29 +403,29 @@
           <div class="tech-badge-grid cols-6">
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
-                  alt="C++" loading="lazy" />
+                <img src="assets/icons/cplusplus-original.svg" alt="C++" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>C++</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-                  alt="Python" loading="lazy" />
+                <img src="assets/icons/python-original.svg" alt="Python" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>Python</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java"
-                  loading="lazy" />
+                <img src="assets/icons/java-original.svg" alt="Java" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>Java</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL"
-                  loading="lazy" />
+                <img src="assets/icons/mysql-original.svg" alt="SQL" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>SQL</span>
             </div>
@@ -448,15 +452,15 @@
           <div class="tech-badge-grid cols-6">
             <div class="tech-badge">
               <div class="tech-badge-icon dark-bg">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
-                  alt="Django" loading="lazy" class="invert-always" />
+                <img src="assets/icons/django-plain.svg" alt="Django" width="40" height="40" loading="lazy"
+                  decoding="async" class="invert-always" />
               </div>
               <span>Django</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon dark-bg">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"
-                  alt="Flask" loading="lazy" class="invert-always" />
+                <img src="assets/icons/flask-original.svg" alt="Flask" width="40" height="40" loading="lazy"
+                  decoding="async" class="invert-always" />
               </div>
               <span>Flask</span>
             </div>
@@ -492,58 +496,57 @@
           <div class="tech-badge-grid cols-8">
             <div class="tech-badge">
               <div class="tech-badge-icon aws-bg">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg"
-                  alt="AWS" loading="lazy" class="invert-always" />
+                <img src="assets/icons/amazonwebservices-plain-wordmark.svg" alt="AWS" width="40" height="40"
+                  loading="lazy" decoding="async" class="invert-always" />
               </div>
               <span>AWS</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
-                  alt="Docker" loading="lazy" />
+                <img src="assets/icons/docker-original.svg" alt="Docker" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>Docker</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg"
-                  alt="Kubernetes" loading="lazy" />
+                <img src="assets/icons/kubernetes-plain.svg" alt="Kubernetes" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>Kubernetes</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git"
-                  loading="lazy" />
+                <img src="assets/icons/git-original.svg" alt="Git" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>Git</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
-                  alt="Linux" loading="lazy" />
+                <img src="assets/icons/linux-original.svg" alt="Linux" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>Linux</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
-                  alt="VS Code" loading="lazy" />
+                <img src="assets/icons/vscode-original.svg" alt="VS Code" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>VS Code</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-                  alt="MySQL WB" loading="lazy" />
+                <img src="assets/icons/mysql-original.svg" alt="MySQL WB" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>MySQL WB</span>
             </div>
             <div class="tech-badge">
               <div class="tech-badge-icon">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
-                  alt="Postman" loading="lazy" />
+                <img src="assets/icons/postman-original.svg" alt="Postman" width="40" height="40" loading="lazy"
+                  decoding="async" />
               </div>
               <span>Postman</span>
             </div>
@@ -620,8 +623,11 @@
           <article class="project-card reveal stagger-1" data-project="1">
             <!-- Cover Image -->
             <div class="project-cover">
-              <img src="assets/projects/project-ecommerce.png" alt="E-Commerce App Preview" loading="lazy"
-                decoding="async" />
+              <picture>
+                <source srcset="assets/projects/project-ecommerce.webp" type="image/webp">
+                <img src="assets/projects/project-ecommerce.png" alt="E-Commerce App Preview" width="800" height="450"
+                  loading="lazy" decoding="async" />
+              </picture>
               <div class="project-cover-overlay">
                 <button class="project-view-btn project-detail-btn" data-project="1">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -652,24 +658,25 @@
               <p class="project-desc">Django-powered e-commerce platform with auth, cart, and order management system.
               </p>
               <div class="project-tech-badges">
-                <span class="tech-badge-sm"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" width="11"
-                    height="11" alt="" /> Django</span>
-                <span class="tech-badge-sm"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-                    width="11" height="11" alt="" /> Python</span>
-                <span class="tech-badge-sm"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
-                    width="11" height="11" alt="" /> SQLite</span>
+                <span class="tech-badge-sm"><img src="assets/icons/django-plain.svg" width="11" height="11" alt=""
+                    loading="lazy" decoding="async" /> Django</span>
+                <span class="tech-badge-sm"><img src="assets/icons/python-original.svg" width="11" height="11" alt=""
+                    loading="lazy" decoding="async" /> Python</span>
+                <span class="tech-badge-sm"><img src="assets/icons/sqlite-original.svg" width="11" height="11" alt=""
+                    loading="lazy" decoding="async" /> SQLite</span>
               </div>
+              <span class="cert-year">Feb 2026</span>
             </div>
           </article>
 
           <!-- ── Project 2 ── -->
           <article class="project-card reveal stagger-2" data-project="2">
             <div class="project-cover">
-              <img src="assets/projects/project-student.png" alt="Student Management System Preview" loading="lazy"
-                decoding="async" />
+              <picture>
+                <source srcset="assets/projects/project-student.webp" type="image/webp">
+                <img src="assets/projects/project-student.png" alt="Student Management System Preview" width="800"
+                  height="450" loading="lazy" decoding="async" />
+              </picture>
               <div class="project-cover-overlay">
                 <button class="project-view-btn project-detail-btn" data-project="2">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -698,19 +705,23 @@
               <p class="project-desc">C++ desktop application for managing student records with file-based CRUD
                 operations.</p>
               <div class="project-tech-badges">
-                <span class="tech-badge-sm"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
-                    width="11" height="11" alt="" /> C++</span>
+                <span class="tech-badge-sm"><img src="assets/icons/cplusplus-original.svg" width="11" height="11" alt=""
+                    loading="lazy" decoding="async" /> C++</span>
                 <span class="tech-badge-sm">⚙️ OOP</span>
                 <span class="tech-badge-sm">📁 File I/O</span>
               </div>
+              <span class="cert-year">Jun 2025</span>
             </div>
           </article>
 
           <!-- ── Project 3 ── -->
           <article class="project-card reveal stagger-3" data-project="3">
             <div class="project-cover">
-              <img src="assets/projects/project-ai.png" alt="AI OS Monitor Preview" loading="lazy" decoding="async" />
+              <picture>
+                <source srcset="assets/projects/project-ai.webp" type="image/webp">
+                <img src="assets/projects/project-ai.png" alt="AI OS Monitor Preview" width="800" height="450"
+                  loading="lazy" decoding="async" />
+              </picture>
               <div class="project-cover-overlay">
                 <button class="project-view-btn project-detail-btn" data-project="3">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -739,24 +750,25 @@
               <p class="project-desc">Flask dashboard using Isolation Forest ML for real-time OS anomaly detection and
                 alerting.</p>
               <div class="project-tech-badges">
-                <span class="tech-badge-sm"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" width="11"
-                    height="11" alt="" /> Flask</span>
-                <span class="tech-badge-sm"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-                    width="11" height="11" alt="" /> Python</span>
-                <span class="tech-badge-sm"><img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg"
-                    width="11" height="11" alt="" /> ML</span>
+                <span class="tech-badge-sm"><img src="assets/icons/flask-original.svg" width="11" height="11" alt=""
+                    loading="lazy" decoding="async" /> Flask</span>
+                <span class="tech-badge-sm"><img src="assets/icons/python-original.svg" width="11" height="11" alt=""
+                    loading="lazy" decoding="async" /> Python</span>
+                <span class="tech-badge-sm"><img src="assets/icons/scikitlearn-original.svg" width="11" height="11"
+                    alt="" loading="lazy" decoding="async" /> ML</span>
               </div>
+              <span class="cert-year">Mar 2025</span>
             </div>
           </article>
 
           <!-- ── Project 4 ── -->
           <article class="project-card reveal stagger-4" data-project="4">
             <div class="project-cover">
-              <img src="assets/projects/project-aws.png" alt="AWS Architecture Preview" loading="lazy"
-                decoding="async" />
+              <picture>
+                <source srcset="assets/projects/project-aws.webp" type="image/webp">
+                <img src="assets/projects/project-aws.png" alt="AWS Architecture Preview" width="800" height="450"
+                  loading="lazy" decoding="async" />
+              </picture>
               <div class="project-cover-overlay">
                 <button class="project-view-btn project-detail-btn" data-project="4">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -790,6 +802,8 @@
                 <span class="tech-badge-sm">🗄️ DynamoDB</span>
                 <span class="tech-badge-sm">🪣 S3</span>
               </div>
+              <span class="cert-year">Apr 2025</span>
+            </div>
             </div>
           </article>
 
@@ -885,8 +899,8 @@
       <div class="container">
         <div class="section-header centered reveal">
           <div class="section-label">Achievements</div>
-          <h2 class="section-title">Certifications &amp; Training</h2>
-          <p class="section-desc">Verified credentials from AWS, IIT, IBM, Google, and more.</p>
+          <h2 class="section-title">Certifications<h2>
+              <p class="section-desc">Verified certificates from AWS, IIT, IBM, Google, and more.</p>
         </div>
 
         <div class="certifications-grid">
@@ -896,7 +910,11 @@
             class="cert-card reveal stagger-1">
             <div class="cert-preview-wrap">
               <div class="cert-preview">
-                <img src="assets/certificates/aws.jpg" alt="AWS Certificate" class="cert-image" />
+                <picture>
+                  <source srcset="assets/certificates/aws.webp" type="image/webp">
+                  <img src="assets/certificates/aws.jpg" alt="AWS Certificate" width="600" height="424" loading="lazy"
+                    decoding="async" class="cert-image" />
+                </picture>
               </div>
               <div class="cert-overlay-hover">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -920,7 +938,11 @@
             target="_blank" rel="noopener" class="cert-card reveal stagger-2">
             <div class="cert-preview-wrap">
               <div class="cert-preview">
-                <img src="assets/certificates/nptel.jpg" alt="AWS Certificate" class="cert-image" />
+                <picture>
+                  <source srcset="assets/certificates/nptel.webp" type="image/webp">
+                  <img src="assets/certificates/nptel.jpg" alt="NPTEL IoT Certificate" width="600" height="424"
+                    loading="lazy" decoding="async" class="cert-image" />
+                </picture>
               </div>
               <div class="cert-overlay-hover">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -944,7 +966,11 @@
             target="_blank" rel="noopener" class="cert-card reveal stagger-3">
             <div class="cert-preview-wrap">
               <div class="cert-preview">
-                <img src="assets/certificates/chatgpt.jpg" alt="AWS Certificate" class="cert-image" />
+                <picture>
+                  <source srcset="assets/certificates/chatgpt.webp" type="image/webp">
+                  <img src="assets/certificates/chatgpt.jpg" alt="ChatGPT Prompt Engineering Certificate" width="600"
+                    height="424" loading="lazy" decoding="async" class="cert-image" />
+                </picture>
               </div>
               <div class="cert-overlay-hover">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -968,7 +994,11 @@
             target="_blank" rel="noopener" class="cert-card reveal stagger-4">
             <div class="cert-preview-wrap">
               <div class="cert-preview">
-                <img src="assets/certificates/buildgenerativeaiapps.jpg" alt="AWS Certificate" class="cert-image" />
+                <picture>
+                  <source srcset="assets/certificates/buildgenerativeaiapps.webp" type="image/webp">
+                  <img src="assets/certificates/buildgenerativeaiapps.jpg" alt="Build Generative AI Apps Certificate"
+                    width="600" height="424" loading="lazy" decoding="async" class="cert-image" />
+                </picture>
               </div>
               <div class="cert-overlay-hover">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -992,7 +1022,11 @@
             target="_blank" rel="noopener" class="cert-card reveal stagger-5">
             <div class="cert-preview-wrap">
               <div class="cert-preview">
-                <img src="assets/certificates/mastergenai.jpg" alt="AWS Certificate" class="cert-image" />
+                <picture>
+                  <source srcset="assets/certificates/mastergenai.webp" type="image/webp">
+                  <img src="assets/certificates/mastergenai.jpg" alt="Master Gen AI Certificate" width="600"
+                    height="424" loading="lazy" decoding="async" class="cert-image" />
+                </picture>
               </div>
               <div class="cert-overlay-hover">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1016,8 +1050,11 @@
             class="cert-card reveal stagger-6">
             <div class="cert-preview-wrap">
               <div class="cert-preview">
-                <img src="assets/certificates/introtohardwareandoperatingsystem.jpg" alt="AWS Certificate"
-                  class="cert-image" />
+                <picture>
+                  <source srcset="assets/certificates/introtohardwareandoperatingsystem.webp" type="image/webp">
+                  <img src="assets/certificates/introtohardwareandoperatingsystem.jpg" alt="Hardware & OS Certificate"
+                    width="600" height="424" loading="lazy" decoding="async" class="cert-image" />
+                </picture>
               </div>
               <div class="cert-overlay-hover">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1041,8 +1078,12 @@
             class="cert-card reveal stagger-7">
             <div class="cert-preview-wrap">
               <div class="cert-preview">
-                <img src="assets/certificates/fundamentalofnetworkcommunication.jpg" alt="AWS Certificate"
-                  class="cert-image" />
+                <picture>
+                  <source srcset="assets/certificates/fundamentalofnetworkcommunication.webp" type="image/webp">
+                  <img src="assets/certificates/fundamentalofnetworkcommunication.jpg"
+                    alt="Network Communication Certificate" width="600" height="424" loading="lazy" decoding="async"
+                    class="cert-image" />
+                </picture>
               </div>
               <div class="cert-overlay-hover">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1066,7 +1107,11 @@
             class="cert-card reveal stagger-8">
             <div class="cert-preview-wrap">
               <div class="cert-preview">
-                <img src="assets/certificates/bitsandbytes.jpg" alt="AWS Certificate" class="cert-image" />
+                <picture>
+                  <source srcset="assets/certificates/bitsandbytes.webp" type="image/webp">
+                  <img src="assets/certificates/bitsandbytes.jpg" alt="Bits & Bytes of Networking Certificate"
+                    width="600" height="424" loading="lazy" decoding="async" class="cert-image" />
+                </picture>
               </div>
               <div class="cert-overlay-hover">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1102,19 +1147,19 @@
           <div class="resume-header">
             <div class="resume-contact-tags">
               <a href="mailto:shrenikjainwos@gmail.com" class="contact-info-tag">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg"
-                  width="16" height="16" alt="Email"> shrenikjainwos@gmail.com
+                <img src="assets/icons/google-original.svg" width="16" height="16" alt="Email" loading="lazy"
+                  decoding="async"> shrenikjainwos@gmail.com
               </a>
               <a href="tel:+919914220785" class="contact-info-tag">
                 📱 +91 9914220785
               </a>
               <a href="https://linkedin.com/in/shrenikkjainn" target="_blank" rel="noopener" class="contact-info-tag">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
-                  width="16" height="16" alt="LinkedIn"> LinkedIn
+                <img src="assets/icons/linkedin-original.svg" width="16" height="16" alt="LinkedIn" loading="lazy"
+                  decoding="async"> LinkedIn
               </a>
               <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener" class="contact-info-tag">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
-                  class="logo-dark" width="16" height="16" alt="GitHub"> GitHub
+                <img src="assets/icons/github-original.svg" class="logo-dark" width="16" height="16" alt="GitHub"
+                  loading="lazy" decoding="async"> GitHub
               </a>
             </div>
           </div>
@@ -1184,25 +1229,20 @@
                     <h4>Languages</h4>
                     <div class="skill-tags">
                       <div class="skill-item">
-                        <img
-                          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"
-                          alt="C++" />
+                        <img src="assets/icons/cplusplus-original.svg" alt="C++" loading="lazy" decoding="async" />
                         <span>C++</span>
                       </div>
                       <div class="skill-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-                          alt="Python" />
+                        <img src="assets/icons/python-original.svg" alt="Python" loading="lazy" decoding="async" />
                         <span>Python</span>
                       </div>
                       <div class="skill-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-                          alt="Java" />
+                        <img src="assets/icons/java-original.svg" alt="Java" loading="lazy" decoding="async" />
                         <span>Java</span>
                       </div>
                       <div class="skill-item">
-                        <img
-                          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"
-                          alt="SQL" />
+                        <img src="assets/icons/azuresqldatabase-original.svg" alt="SQL" loading="lazy"
+                          decoding="async" />
                         <span>SQL</span>
                       </div>
                     </div>
@@ -1211,13 +1251,11 @@
                     <h4>Frameworks</h4>
                     <div class="skill-tags">
                       <div class="skill-item django-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
-                          alt="Django" />
+                        <img src="assets/icons/django-plain.svg" alt="Django" loading="lazy" decoding="async" />
                         <span>Django</span>
                       </div>
                       <div class="skill-item flask-icon">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg"
-                          alt="Flask" />
+                        <img src="assets/icons/flask-original.svg" alt="Flask" loading="lazy" decoding="async" />
                         <span>Flask</span>
                       </div>
                       <div class="skill-item">
@@ -1230,36 +1268,28 @@
                     <h4>Tools / Platforms</h4>
                     <div class="skill-tags">
                       <div class="skill-item">
-                        <img
-                          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
-                          alt="AWS" />
+                        <img src="assets/icons/amazonwebservices-original-wordmark.svg" alt="AWS" loading="lazy"
+                          decoding="async" />
                         <span>AWS</span>
                       </div>
                       <div class="skill-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
-                          alt="Docker" />
+                        <img src="assets/icons/docker-original.svg" alt="Docker" loading="lazy" decoding="async" />
                         <span>Docker</span>
                       </div>
                       <div class="skill-item">
-                        <img
-                          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg"
-                          alt="Kubernetes" />
+                        <img src="assets/icons/kubernetes-plain.svg" alt="Kubernetes" loading="lazy" decoding="async" />
                         <span>Kubernetes</span>
                       </div>
                       <div class="skill-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
-                          alt="Git" />
+                        <img src="assets/icons/git-original.svg" alt="Git" loading="lazy" decoding="async" />
                         <span>Git</span>
                       </div>
                       <div class="skill-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
-                          alt="Linux" />
+                        <img src="assets/icons/linux-original.svg" alt="Linux" loading="lazy" decoding="async" />
                         <span>Linux</span>
                       </div>
                       <div class="skill-item">
-                        <img
-                          src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
-                          alt="Postman" />
+                        <img src="assets/icons/postman-original.svg" alt="Postman" loading="lazy" decoding="async" />
                         <span>Postman</span>
                       </div>
                     </div>
@@ -1460,8 +1490,8 @@
         <div class="contact-info">
           <a href="mailto:shrenikjainwos@gmail.com" class="contact-card reveal stagger-1">
             <div class="contact-card-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg" width="22"
-                height="22" alt="Email">
+              <img src="assets/icons/google-original.svg" width="22" height="22" alt="Email" loading="lazy"
+                decoding="async">
             </div>
             <div class="contact-card-info">
               <h4>Email</h4>
@@ -1472,8 +1502,8 @@
           <a href="https://linkedin.com/in/shrenikkjainn" target="_blank" rel="noopener"
             class="contact-card reveal stagger-2">
             <div class="contact-card-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
-                width="22" height="22" alt="LinkedIn">
+              <img src="assets/icons/linkedin-original.svg" width="22" height="22" alt="LinkedIn" loading="lazy"
+                decoding="async">
             </div>
             <div class="contact-card-info">
               <h4>LinkedIn</h4>
@@ -1484,8 +1514,8 @@
           <a href="https://github.com/shrenikkjainn" target="_blank" rel="noopener"
             class="contact-card reveal stagger-3">
             <div class="contact-card-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
-                class="logo-dark" width="22" height="22" alt="GitHub">
+              <img src="assets/icons/github-original.svg" class="logo-dark" width="22" height="22" alt="GitHub"
+                loading="lazy" decoding="async">
             </div>
             <div class="contact-card-info">
               <h4>GitHub</h4>

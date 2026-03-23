@@ -209,7 +209,7 @@ function buildModalHTML(data) {
 </a>
 ` : ''}
       <a href="${data.github}" target="_blank" rel="noopener" class="btn btn-outline">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+  <img src="assets/icons/github-original.svg"
        class="logo-dark" width="16" height="16" alt="GitHub">
   GitHub
 </a>
@@ -444,7 +444,7 @@ document.addEventListener('sectionsLoaded', initAll);
     // Update profile image if it exists in DOM
     const profileImg = document.getElementById('profileImage');
     if (profileImg) {
-      profileImg.src = isDark ? 'assets/profilephoto/profile-dark.png' : 'assets/profilephoto/profile-light.jpg';
+      profileImg.src = isDark ? 'assets/images/profile-dark.webp' : 'assets/images/profile-light.webp';
     }
   }
 
