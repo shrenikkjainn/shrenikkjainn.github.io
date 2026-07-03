@@ -136,6 +136,27 @@ document.addEventListener('sectionsLoaded', initAnimations);
 /* ─── Project Data ─── */
 const PROJECT_DATA = {
   1: {
+    title: 'Collaborative Online Code Editor',
+    description: 'A full-stack collaborative coding platform featuring real-time code synchronization using Socket.IO, Monaco Editor integration, room-based collaboration, project management, file handling, and persistent storage.',
+    details: [
+      'Real-time collaborative editing with Socket.IO',
+      'Monaco Editor integration',
+      'Room-based collaboration',
+      'Project and file management',
+      'Persistent SQLite storage',
+      'Responsive modern interface'
+    ],
+    technologies: [
+      'Python',
+      'Flask',
+      'Socket.IO',
+      'Monaco Editor',
+      'JavaScript',
+      'SQLite'
+    ],
+    github: 'https://github.com/realtime-code-editor/RealTimeCodeEditor'
+},
+  2: {
     title: 'Full-Stack E-Commerce Application',
     description: 'A full-stack e-commerce platform built with Django featuring secure authentication, product browsing, cart management, and order processing.',
     details: [
@@ -149,7 +170,7 @@ const PROJECT_DATA = {
     github: 'https://github.com/shrenikkjainn/Django-eCommerce-Web-Application',
     live: "https://django-ecommerce-web-application.onrender.com"
   },
-  2: {
+  3: {
     title: 'Student Management System',
     description: 'Desktop application built with C++ for managing student academic records with CRUD operations and file-based persistence.',
     details: [
@@ -161,7 +182,7 @@ const PROJECT_DATA = {
     technologies: ['C++', 'OOP', 'File Handling', 'Data Structures'],
     github: 'https://github.com/shrenikkjainn/Student-Management-System---cpp-program'
   },
-  3: {
+  4: {
     title: 'AI-Powered OS Monitoring System',
     description: 'Flask-based real-time monitoring dashboard with machine learning anomaly detection for system resources.',
     details: [
@@ -173,7 +194,7 @@ const PROJECT_DATA = {
     technologies: ['Python', 'Flask', 'Machine Learning', 'scikit-learn', 'Real-time'],
     github: 'https://github.com/shrenikkjainn/OS-Moniter'
   },
-  4: {
+  5: {
     title: 'Scalable E-Commerce Architecture on AWS',
     description: 'Production-grade cloud infrastructure for high-traffic e-commerce with auto-scaling and CDN optimisation.',
     details: [
